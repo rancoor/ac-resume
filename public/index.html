@@ -464,48 +464,35 @@
 
     <script src="js/main.js"></script>
     
-    <!-- Auto-refresh when changes are detected -->
+    <!-- Live reload disabled for troubleshooting -->
     <script>
-        // Live reload using WebSocket
-        function initLiveReload() {
-            if (typeof WebSocket !== 'undefined') {
-                const ws = new WebSocket(`ws://${window.location.host}`);
-                
-                ws.onopen = function() {
-                    console.log('👀 Live reload WebSocket connected');
-                };
-                
-                ws.onmessage = function(event) {
-                    try {
-                        const data = JSON.parse(event.data);
-                        if (data.type === 'reload') {
-                            console.log('🔄 Changes detected, reloading page...');
-                            window.location.reload();
-                        } else if (data.type === 'connected') {
-                            console.log('✅ Live reload active - watching for changes');
-                        }
-                    } catch (e) {
-                        console.warn('Invalid WebSocket message:', event.data);
-                    }
-                };
-                
-                ws.onerror = function(error) {
-                    console.log('Live reload WebSocket error:', error);
-                };
-                
-                ws.onclose = function() {
-                    console.log('Live reload WebSocket disconnected, retrying in 5s...');
-                    setTimeout(initLiveReload, 5000);
-                };
-            } else {
-                console.warn('WebSocket not supported, live reload disabled');
-            }
-        }
+        console.log('✅ Page loaded successfully - no live reload');
         
-        // Initialize live reload if not in production
-        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-            initLiveReload();
-        }
+        // Test if custom colors are working
+        document.addEventListener('DOMContentLoaded', function() {
+            const primaryElements = document.querySelectorAll('.text-primary');
+            console.log('Found', primaryElements.length, 'elements with .text-primary class');
+            
+            // Force ensure text is visible
+            primaryElements.forEach(el => {
+                el.style.color = '#1a1625';
+            });
+            
+            // Test other color classes
+            document.querySelectorAll('.text-gray-700').forEach(el => {
+                el.style.color = '#374151';
+            });
+            
+            document.querySelectorAll('.text-gray-600').forEach(el => {
+                el.style.color = '#4b5563';
+            });
+            
+            document.querySelectorAll('.text-accent').forEach(el => {
+                el.style.color = '#7c3aed';
+            });
+            
+            console.log('✅ Text colors forced via JavaScript');
+        });
     </script>
 </body>
 </html>
