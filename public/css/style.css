@@ -30,21 +30,86 @@
     color: #f97316 !important;
 }
 
-/* Ensure all standard text colors are visible */
+/* Ensure all standard text colors are visible with proper contrast */
 .text-gray-700 {
-    color: #374151 !important;
+    color: #1f2937 !important; /* Much darker for better contrast */
 }
 
 .text-gray-600 {
-    color: #4b5563 !important;
+    color: #374151 !important; /* Darker for better readability */
 }
 
 .text-gray-800 {
-    color: #1f2937 !important;
+    color: #111827 !important; /* Very dark for high contrast */
 }
 
 .text-white {
     color: #ffffff !important;
+}
+
+/* Experience section specific improvements */
+.experience-card {
+    padding: 1.5rem 2rem !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.experience-card:hover {
+    transform: translateY(-4px) scale(1.01) !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Improved text hierarchy */
+.job-title {
+    color: #111827 !important; /* Very dark for main titles */
+    font-weight: 700 !important;
+    font-size: 1.5rem !important;
+    line-height: 1.3 !important;
+}
+
+.company-name {
+    color: #7c3aed !important; /* Keep accent but ensure it's visible */
+    font-weight: 600 !important;
+    font-size: 1.125rem !important;
+}
+
+.job-location {
+    color: #6b7280 !important; /* Medium gray for location */
+    font-weight: 400 !important;
+    font-size: 0.875rem !important;
+}
+
+.date-badge {
+    background-color: #f3f4f6 !important;
+    color: #374151 !important; /* Darker text on light background */
+    font-weight: 500 !important;
+    border: 1px solid #e5e7eb !important;
+}
+
+/* Bullet points with better contrast */
+.bullet-point {
+    color: #1f2937 !important; /* Dark text for readability */
+    line-height: 1.6 !important;
+    font-size: 0.95rem !important;
+}
+
+/* Contact section improvements */
+.contact-card {
+    transition: all 0.3s ease !important;
+}
+
+.contact-card:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1) !important;
+}
+
+.contact-title {
+    color: #111827 !important; /* Very dark for contact labels */
+    font-weight: 600 !important;
+}
+
+.contact-info {
+    color: #4b5563 !important; /* Medium gray for contact details */
+    font-weight: 400 !important;
 }
 
 /* Border colors */
