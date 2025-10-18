@@ -122,6 +122,40 @@ router.put('/api/portfolio/achievements', requireAuth, async (req, res) => {
   }
 });
 
+// Update entire portfolio (comprehensive update)
+router.put('/api/portfolio', requireAuth, async (req, res) => {
+  try {
+    const currentData = await fs.readJson(PORTFOLIO_FILE);
+    const updatedData = { ...currentData, ...req.body };
+    
+    // Ensure experience items have proper IDs
+    if (updatedData.experience) {
+      updatedData.experience = updatedData.experience.map((exp, index) => ({
+        ...exp,
+        id: exp.id || index + 1
+      }));
+    }
+    
+    await fs.writeJson(PORTFOLIO_FILE, updatedData, { spaces: 2 });
+    
+    // Trigger live reload for all connected clients
+    if (global.broadcastReload) {
+      global.broadcastReload();
+      console.log('📢 Broadcasting reload to all connected clients');
+    }
+    
+    res.json({ 
+      success: true, 
+      message: 'Portfolio updated successfully!',
+      data: updatedData,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error('Error updating portfolio:', error);
+    res.status(500).json({ error: 'Failed to update portfolio' });
+  }
+});
+
 // Publish changes (triggers website refresh)
 router.post('/api/portfolio/publish', requireAuth, async (req, res) => {
   try {
@@ -142,9 +176,9 @@ router.post('/api/portfolio/publish', requireAuth, async (req, res) => {
   }
 });
 
-// Dashboard page
+// Dashboard page - serve the new comprehensive admin dashboard
 router.get('/dashboard', requireAuth, (req, res) => {
-  res.sendFile(path.join(__dirname, '../views/dashboard.html'));
+  res.sendFile(path.join(__dirname, '../../public/admin-v2.html'));
 });
 
 module.exports = router;

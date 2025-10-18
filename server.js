@@ -90,8 +90,22 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.get('/admin', (req, res) => {
-  res.sendFile(path.join(__dirname, 'admin', 'views', 'login.html'));
+// Admin routes with proper trailing slash handling
+app.get(['/admin', '/admin/'], (req, res) => {
+  if (req.session.token) {
+    res.redirect('/admin/dashboard');
+  } else {
+    res.redirect('/admin/login');
+  }
+});
+
+// Handle direct access to admin login
+app.get('/admin/login', (req, res) => {
+  if (req.session.token) {
+    res.redirect('/admin/dashboard');
+  } else {
+    res.sendFile(path.join(__dirname, 'admin', 'views', 'login.html'));
+  }
 });
 
 const server = http.createServer(app);

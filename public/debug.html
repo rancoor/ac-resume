@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+        <h1 class="text-2xl font-bold mb-4">Debug Dashboard</h1>
+        
+        <div id="debug-output" class="bg-white p-4 rounded shadow">
+            <p>Loading debug info...</p>
+        </div>
+        
+        <div class="mt-4">
+            <button id="test-api" class="bg-blue-500 text-white px-4 py-2 rounded">Test API</button>
+            <button id="test-local-storage" class="bg-green-500 text-white px-4 py-2 rounded">Test LocalStorage</button>
+            <button id="load-admin-js" class="bg-purple-500 text-white px-4 py-2 rounded">Load Admin JS</button>
+        </div>
+        
+        <!-- Hidden form elements for testing -->
+        <div style="display: none;">
+            <input name="name" value="">
+            <input name="title" value="">
+            <input name="email" value="">
+            <input name="phone" value="">
+            <input name="location" value="">
+            <input name="website" value="">
+            <input name="customerSatisfaction" value="">
+            <input name="operationalEfficiency" value="">
+            <input name="experience" value="">
+        </div>
+    </div>
+
+    <script>
+        const debugOutput = document.getElementById('debug-output');
+        
+        function log(message) {
+            debugOutput.innerHTML += '<div>' + new Date().toLocaleTimeString() + ': ' + message + '</div>';
+        }
+        
+        // Test API endpoint
+        document.getElementById('test-api').addEventListener('click', async () => {
+            try {
+                log('Testing API endpoint...');
+                const response = await fetch('/api/portfolio');
+                if (response.ok) {
+                    const data = await response.json();
+                    log('✅ API working! Profile name: ' + data.profile.name);
+                } else {
+                    log('❌ API failed with status: ' + response.status);
+                }
+            } catch (error) {
+                log('❌ API error: ' + error.message);
+            }
+        });
+        
+        // Test localStorage
+        document.getElementById('test-local-storage').addEventListener('click', () => {
+            try {
+                localStorage.setItem('test', 'working');
+                const test = localStorage.getItem('test');
+                log('✅ LocalStorage working: ' + test);
+                localStorage.removeItem('test');
+            } catch (error) {
+                log('❌ LocalStorage error: ' + error.message);
+            }
+        });
+        
+        // Load admin JS
+        document.getElementById('load-admin-js').addEventListener('click', () => {
+            const script = document.createElement('script');
+            script.src = 'js/admin-v2.js';
+            script.onload = () => log('✅ Admin JS loaded');
+            script.onerror = () => log('❌ Admin JS failed to load');
+            document.head.appendChild(script);
+        });
+        
+        // Initial tests
+        window.addEventListener('load', () => {
+            log('Page loaded');
+            log('Window location: ' + window.location.href);
+        });
+    </script>
+</body>
+</html>

@@ -11,6 +11,26 @@ router.get('/login', (req, res) => {
   res.sendFile(require('path').join(__dirname, '../views/login.html'));
 });
 
+// Dashboard page (authenticated route)
+router.get('/dashboard', (req, res) => {
+  const token = req.session.token;
+  
+  if (!token) {
+    return res.redirect('/admin/login');
+  }
+  
+  try {
+    const jwt = require('jsonwebtoken');
+    jwt.verify(token, process.env.JWT_SECRET);
+    // Serve the advanced admin dashboard
+    res.sendFile(require('path').join(__dirname, '../../public/admin.html'));
+  } catch (error) {
+    req.session.destroy(() => {
+      res.redirect('/admin/login');
+    });
+  }
+});
+
 // Login API
 router.post('/api/login', async (req, res) => {
   try {
@@ -50,6 +70,25 @@ router.post('/api/logout', (req, res) => {
     }
     res.json({ success: true, redirectUrl: '/admin/login' });
   });
+});
+
+// Auth status check
+router.get('/api/auth-status', (req, res) => {
+  const token = req.session.token;
+  
+  if (!token) {
+    return res.status(401).json({ authenticated: false });
+  }
+  
+  try {
+    const jwt = require('jsonwebtoken');
+    jwt.verify(token, process.env.JWT_SECRET);
+    res.json({ authenticated: true });
+  } catch (error) {
+    req.session.destroy(() => {
+      res.status(401).json({ authenticated: false });
+    });
+  }
 });
 
 module.exports = router;

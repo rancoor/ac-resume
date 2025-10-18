@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-6">Admin Dashboard Test</h1>
+        
+        <div id="status" class="bg-white p-4 rounded shadow mb-4">
+            <h2 class="text-lg font-semibold mb-2">Status</h2>
+            <div id="status-content">Loading...</div>
+        </div>
+        
+        <div class="bg-white p-4 rounded shadow mb-4">
+            <h2 class="text-lg font-semibold mb-2">Test Data Loading</h2>
+            <button id="test-api" class="bg-blue-500 text-white px-4 py-2 rounded mr-2">Test API</button>
+            <button id="test-cms" class="bg-green-500 text-white px-4 py-2 rounded mr-2">Test CMS Init</button>
+            <button id="clear-storage" class="bg-red-500 text-white px-4 py-2 rounded">Clear Storage</button>
+        </div>
+        
+        <div class="bg-white p-4 rounded shadow">
+            <h2 class="text-lg font-semibold mb-2">Form Test</h2>
+            <div class="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label class="block text-sm font-medium mb-1">Name</label>
+                    <input name="name" type="text" class="w-full border rounded px-3 py-2">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Title</label>
+                    <input name="title" type="text" class="w-full border rounded px-3 py-2">
+                </div>
+            </div>
+            <div id="message-container"></div>
+        </div>
+    </div>
+
+    <script src="js/admin-v2.js"></script>
+    <script>
+        const status = document.getElementById('status-content');
+        
+        function log(message) {
+            status.innerHTML += '<div>' + new Date().toLocaleTimeString() + ': ' + message + '</div>';
+        }
+        
+        // Test API
+        document.getElementById('test-api').addEventListener('click', async () => {
+            try {
+                log('Testing API...');
+                const response = await fetch('/api/portfolio');
+                if (response.ok) {
+                    const data = await response.json();
+                    log('✅ API OK - Name: ' + data.profile.name);
+                } else {
+                    log('❌ API Error: ' + response.status);
+                }
+            } catch (error) {
+                log('❌ API Exception: ' + error.message);
+            }
+        });
+        
+        // Test CMS
+        document.getElementById('test-cms').addEventListener('click', () => {
+            if (typeof ResumeCMS !== 'undefined') {
+                log('✅ ResumeCMS class available');
+                if (window.cms) {
+                    log('✅ CMS instance exists');
+                    if (typeof window.cms.loadData === 'function') {
+                        log('✅ loadData method exists');
+                        window.cms.loadData().then(() => {
+                            log('✅ loadData completed');
+                            if (window.cms.data) {
+                                log('✅ Data loaded: ' + JSON.stringify(window.cms.data).substring(0, 100) + '...');
+                            }
+                        }).catch(err => {
+                            log('❌ loadData error: ' + err.message);
+                        });
+                    } else {
+                        log('❌ loadData method missing');
+                    }
+                } else {
+                    log('❌ CMS instance not found');
+                }
+            } else {
+                log('❌ ResumeCMS class not found');
+            }
+        });
+        
+        // Clear storage
+        document.getElementById('clear-storage').addEventListener('click', () => {
+            localStorage.clear();
+            log('✅ Storage cleared');
+        });
+        
+        // Initial check
+        window.addEventListener('load', () => {
+            log('Page loaded');
+            if (typeof ResumeCMS !== 'undefined') {
+                log('✅ ResumeCMS available');
+            } else {
+                log('❌ ResumeCMS not available');
+            }
+        });
+    </script>
+</body>
+</html>

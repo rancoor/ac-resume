@@ -5,16 +5,25 @@
 
 class ResumeCMS {
     constructor() {
+        console.log('⚙️ ResumeCMS constructor starting...');
         this.data = {};
         this.editors = {};
         this.sortables = {};
-        this.autosaveDelay = 2000;
         this.autosaveTimeout = null;
+        this.autosaveDelay = 2000; // 2 seconds
         
+        console.log('⚙️ Calling init()...');
         this.init();
+        console.log('✅ ResumeCMS constructor completed');
     }
 
     async init() {
+        // Check authentication first
+        const isAuthenticated = await this.checkAuth();
+        if (!isAuthenticated) {
+            return; // Will redirect to login
+        }
+        
         this.setupNavigation();
         this.setupRichTextEditors();
         this.setupEventListeners();
@@ -154,6 +163,9 @@ class ResumeCMS {
         // Backup controls
         document.getElementById('create-backup')?.addEventListener('click', () => this.createBackup());
         document.getElementById('restore-file')?.addEventListener('change', (e) => this.restoreFromFile(e));
+        
+        // Authentication controls
+        document.getElementById('logout-btn')?.addEventListener('click', () => this.logout());
 
         // Input change listeners for autosave
         document.addEventListener('input', (e) => {
@@ -173,64 +185,167 @@ class ResumeCMS {
     // Data Management
     async loadData() {
         try {
-            // Load from localStorage first
+            let dataLoaded = false;
+            
+            // First check localStorage for admin changes
             const storedData = localStorage.getItem('resumeData');
             if (storedData) {
-                this.data = JSON.parse(storedData);
-            } else {
-                // Load from API if available
-                const response = await fetch('/api/portfolio');
-                if (response.ok) {
-                    this.data = await response.json();
+                try {
+                    this.data = JSON.parse(storedData);
+                    console.log('✅ Loaded data from localStorage');
+                    dataLoaded = true;
+                } catch (parseError) {
+                    console.warn('⚠️ Invalid localStorage data, will load from API');
+                    localStorage.removeItem('resumeData');
                 }
             }
 
-            this.populateFields();
-            this.updateStats();
+            // If no localStorage data, load from API
+            if (!dataLoaded || !this.data || Object.keys(this.data).length === 0) {
+                console.log('📡 Loading data from API...');
+                
+                try {
+                    // Try public API first (no auth required)
+                    const publicResponse = await fetch('/api/portfolio');
+                    if (publicResponse.ok) {
+                        this.data = await publicResponse.json();
+                        console.log('✅ Loaded data from public API');
+                        
+                        // Save to localStorage for future use
+                        localStorage.setItem('resumeData', JSON.stringify(this.data));
+                        dataLoaded = true;
+                    }
+                } catch (apiError) {
+                    console.warn('⚠️ API error:', apiError);
+                }
+                
+                // Last resort: use default data
+                if (!dataLoaded) {
+                    console.log('ℹ️ Using default data structure');
+                    this.data = this.getDefaultData();
+                }
+            }
+
+            try {
+                this.populateFields();
+            } catch (populateError) {
+                console.warn('⚠️ Error populating fields:', populateError.message);
+            }
+            
+            try {
+                this.updateStats();
+            } catch (statsError) {
+                console.warn('⚠️ Error updating stats:', statsError.message);
+            }
+            
             this.showMessage('Data loaded successfully', 'success');
         } catch (error) {
             console.error('Error loading data:', error);
-            this.showMessage('Error loading data', 'error');
+            this.showMessage('Error loading data - using defaults', 'warning');
+            // Use default data as last resort
+            this.data = this.getDefaultData();
+            
+            try {
+                this.populateFields();
+            } catch (populateError) {
+                console.warn('⚠️ Error populating fields in error handler:', populateError.message);
+            }
+            
+            try {
+                this.updateStats();
+            } catch (statsError) {
+                console.warn('⚠️ Error updating stats in error handler:', statsError.message);
+            }
         }
     }
 
+    getDefaultData() {
+        return {
+            profile: {
+                name: '',
+                title: '',
+                description: '',
+                email: '',
+                phone: '',
+                location: '',
+                website: ''
+            },
+            about: {
+                summary: '',
+                description: '',
+                education: {
+                    degree: '',
+                    institution: '',
+                    years: '',
+                    description: ''
+                },
+                certifications: []
+            },
+            experience: [],
+            skills: [],
+            achievements: {
+                customerSatisfaction: '',
+                operationalEfficiency: '',
+                experience: ''
+            }
+        };
+    }
+
     populateFields() {
-        // Personal information
-        if (this.data.profile) {
-            document.querySelector('input[name="name"]').value = this.data.profile.name || '';
-            document.querySelector('input[name="title"]').value = this.data.profile.title || '';
-            document.querySelector('input[name="email"]').value = this.data.profile.email || '';
-            document.querySelector('input[name="phone"]').value = this.data.profile.phone || '';
-            document.querySelector('input[name="location"]').value = this.data.profile.location || '';
-            document.querySelector('input[name="website"]').value = this.data.profile.website || '';
+        try {
+            // Personal information
+            if (this.data.profile) {
+                const nameField = document.querySelector('input[name="name"]');
+                const titleField = document.querySelector('input[name="title"]');
+                const emailField = document.querySelector('input[name="email"]');
+                const phoneField = document.querySelector('input[name="phone"]');
+                const locationField = document.querySelector('input[name="location"]');
+                const websiteField = document.querySelector('input[name="website"]');
+                
+                if (nameField) nameField.value = this.data.profile.name || '';
+                if (titleField) titleField.value = this.data.profile.title || '';
+                if (emailField) emailField.value = this.data.profile.email || '';
+                if (phoneField) phoneField.value = this.data.profile.phone || '';
+                if (locationField) locationField.value = this.data.profile.location || '';
+                if (websiteField) websiteField.value = this.data.profile.website || '';
+                
+                if (this.editors['personal-description-editor']) {
+                    this.editors['personal-description-editor'].setContents([]);
+                    this.editors['personal-description-editor'].setText(this.data.profile.description || '');
+                }
+            }
+
+            // About section
+            if (this.data.about) {
+                if (this.editors['about-summary-editor']) {
+                    this.editors['about-summary-editor'].setText(this.data.about.summary || '');
+                }
+                if (this.editors['about-description-editor']) {
+                    this.editors['about-description-editor'].setText(this.data.about.description || '');
+                }
+            }
+
+            // Experience
+            this.renderExperience();
+
+            // Skills
+            this.renderSkills();
+
+            // Achievements
+            if (this.data.achievements) {
+                const customerSatField = document.querySelector('input[name="customerSatisfaction"]');
+                const operationalEffField = document.querySelector('input[name="operationalEfficiency"]');
+                const experienceField = document.querySelector('input[name="experience"]');
+                
+                if (customerSatField) customerSatField.value = this.data.achievements.customerSatisfaction || '';
+                if (operationalEffField) operationalEffField.value = this.data.achievements.operationalEfficiency || '';
+                if (experienceField) experienceField.value = this.data.achievements.experience || '';
+            }
             
-            if (this.editors['personal-description-editor']) {
-                this.editors['personal-description-editor'].setContents([]);
-                this.editors['personal-description-editor'].setText(this.data.profile.description || '');
-            }
-        }
-
-        // About section
-        if (this.data.about) {
-            if (this.editors['about-summary-editor']) {
-                this.editors['about-summary-editor'].setText(this.data.about.summary || '');
-            }
-            if (this.editors['about-description-editor']) {
-                this.editors['about-description-editor'].setText(this.data.about.description || '');
-            }
-        }
-
-        // Experience
-        this.renderExperience();
-
-        // Skills
-        this.renderSkills();
-
-        // Achievements
-        if (this.data.achievements) {
-            document.querySelector('input[name="customerSatisfaction"]').value = this.data.achievements.customerSatisfaction || '';
-            document.querySelector('input[name="operationalEfficiency"]').value = this.data.achievements.operationalEfficiency || '';
-            document.querySelector('input[name="experience"]').value = this.data.achievements.experience || '';
+            console.log('✅ Fields populated successfully');
+        } catch (error) {
+            console.error('❌ Error populating fields:', error);
+            this.showMessage('Error loading form fields', 'warning');
         }
     }
 
@@ -539,14 +654,61 @@ class ResumeCMS {
     }
 
     // Data Persistence
-    saveData() {
+    async saveData() {
         try {
+            // Save to localStorage first for immediate access
             localStorage.setItem('resumeData', JSON.stringify(this.data));
+            
+            // Also try to persist to server API
+            await this.persistToAPI();
+            
             this.updateLastModified();
             this.showAutosaveIndicator();
         } catch (error) {
             console.error('Error saving data:', error);
             this.showMessage('Error saving data', 'error');
+        }
+    }
+    
+    async persistToAPI() {
+        try {
+            // Save profile data
+            if (this.data.profile) {
+                await fetch('/admin/api/portfolio/profile', {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(this.data.profile)
+                });
+            }
+            
+            // Save about data  
+            if (this.data.about) {
+                await fetch('/admin/api/portfolio/about', {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(this.data.about)
+                });
+            }
+            
+            // Save achievements
+            if (this.data.achievements) {
+                await fetch('/admin/api/portfolio/achievements', {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(this.data.achievements)
+                });
+            }
+            
+            // Save skills
+            if (this.data.skills) {
+                await fetch('/admin/api/portfolio/skills', {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ skills: this.data.skills })
+                });
+            }
+        } catch (error) {
+            console.log('API persistence failed, using localStorage only:', error);
         }
     }
 
@@ -640,20 +802,36 @@ class ResumeCMS {
 
     // Statistics and Updates
     updateStats() {
-        const expCount = this.data.experience ? this.data.experience.length : 0;
-        const skillsCount = this.data.skills ? this.data.skills.length : 0;
-        
-        document.getElementById('exp-count').textContent = expCount;
-        document.getElementById('skills-count').textContent = skillsCount;
-        document.getElementById('experience-count').textContent = expCount;
-        
-        this.updateLastModified();
+        try {
+            const expCount = this.data.experience ? this.data.experience.length : 0;
+            const skillsCount = this.data.skills ? this.data.skills.length : 0;
+            
+            const expCountEl = document.getElementById('exp-count');
+            const skillsCountEl = document.getElementById('skills-count');
+            const experienceCountEl = document.getElementById('experience-count');
+            
+            if (expCountEl) expCountEl.textContent = expCount;
+            if (skillsCountEl) skillsCountEl.textContent = skillsCount;
+            if (experienceCountEl) experienceCountEl.textContent = expCount;
+            
+            this.updateLastModified();
+            console.log('✅ Stats updated: Experience=' + expCount + ', Skills=' + skillsCount);
+        } catch (error) {
+            console.warn('⚠️ Error updating stats (elements may not exist):', error.message);
+        }
     }
 
     updateLastModified() {
-        const now = new Date();
-        const timeStr = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-        document.getElementById('last-updated').textContent = timeStr;
+        try {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            const lastUpdatedEl = document.getElementById('last-updated');
+            if (lastUpdatedEl) {
+                lastUpdatedEl.textContent = timeStr;
+            }
+        } catch (error) {
+            console.warn('⚠️ Error updating last modified time:', error.message);
+        }
     }
 
     // Preview and Export
@@ -890,8 +1068,33 @@ class ResumeCMS {
         this.showLoadingOverlay();
         
         try {
-            // Save data first
+            // Save data locally first
             this.saveData();
+            
+            console.log('📤 Publishing changes to server...');
+            
+            // Send data to server API
+            const response = await fetch('/admin/api/portfolio', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(this.data)
+            });
+            
+            if (!response.ok) {
+                if (response.status === 401 || response.status === 403) {
+                    this.showMessage('⚠️ Authentication required. Redirecting to login...', 'warning');
+                    setTimeout(() => {
+                        window.location.href = '/admin/login';
+                    }, 2000);
+                    return;
+                }
+                throw new Error(`Server error: ${response.status} ${response.statusText}`);
+            }
+            
+            const result = await response.json();
+            console.log('✅ Data saved to server:', result);
             
             // Trigger live resume update via storage event
             window.dispatchEvent(new StorageEvent('storage', {
@@ -919,11 +1122,11 @@ class ResumeCMS {
                 }
             }
             
-            this.showMessage('Changes published successfully! Resume updated live.', 'success');
+            this.showMessage('✅ Changes published successfully! Site updated and live.', 'success');
             
         } catch (error) {
-            this.showMessage('Error publishing changes', 'error');
             console.error('Publish error:', error);
+            this.showMessage(`❌ Error publishing changes: ${error.message}`, 'error');
         }
         
         this.hideLoadingOverlay();
@@ -1013,14 +1216,67 @@ class ResumeCMS {
         // Similar to addExperience but for certifications
         this.showMessage('Certification management coming soon', 'info');
     }
+    
+    // Authentication
+    async logout() {
+        if (!confirm('Are you sure you want to logout?')) {
+            return;
+        }
+        
+        try {
+            const response = await fetch('/admin/api/logout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                // Clear localStorage data
+                localStorage.removeItem('resumeData');
+                
+                // Redirect to login
+                window.location.href = result.redirectUrl || '/admin/login';
+            } else {
+                this.showMessage('Logout failed', 'error');
+            }
+        } catch (error) {
+            console.error('Logout error:', error);
+            this.showMessage('Logout failed', 'error');
+        }
+    }
+    
+    // Check authentication status
+    async checkAuth() {
+        try {
+            const response = await fetch('/admin/api/auth-status');
+            if (!response.ok) {
+                // Redirect to login if not authenticated
+                window.location.href = '/admin/login';
+                return false;
+            }
+            return true;
+        } catch (error) {
+            console.error('Auth check error:', error);
+            window.location.href = '/admin/login';
+            return false;
+        }
+    }
 }
 
 // Initialize the CMS when the page loads
 let cms;
 
 document.addEventListener('DOMContentLoaded', () => {
-    cms = new ResumeCMS();
+    console.log('🚀 DOM loaded, initializing CMS...');
+    try {
+        cms = new ResumeCMS();
+        // Make CMS globally available for onclick handlers
+        window.cms = cms;
+        console.log('✅ CMS initialized successfully');
+    } catch (error) {
+        console.error('❌ CMS initialization error:', error);
+    }
 });
-
-// Make CMS globally available for onclick handlers
-window.cms = cms;
