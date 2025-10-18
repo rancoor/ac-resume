@@ -42,6 +42,9 @@ app.use('/admin', authRoutes);
 app.use('/admin', portfolioRoutes);
 app.use('/admin', enhancedRoutes);
 
+// Preview routes
+app.use('/admin', require('./admin/routes/preview'));
+
 // WebSocket endpoint info for debugging
 app.get('/api/ws-info', (req, res) => {
   res.json({
