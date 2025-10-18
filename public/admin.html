@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Admin Editor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8f9ff;
+            color: #450693;
+            line-height: 1.6;
+        }
+        
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .admin-header {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(69, 6, 147, 0.1);
+            border: 2px solid #450693;
+            position: relative;
+        }
+        
+        .admin-header::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            height: 6px;
+            background: #FF3F7F;
+            border-radius: 16px 16px 0 0;
+        }
+        
+        .admin-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #450693;
+            margin-bottom: 0.5rem;
+        }
+        
+        .admin-subtitle {
+            color: #8C00FF;
+            font-weight: 600;
+        }
+        
+        .admin-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: #FF3F7F;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #8C00FF;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #FFC400;
+            border: 2px solid #FFC400;
+        }
+        
+        .btn-secondary:hover {
+            background: #FFC400;
+            color: #450693;
+        }
+        
+        .btn-success {
+            background: #10B981;
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: #059669;
+        }
+        
+        .editor-section {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(69, 6, 147, 0.1);
+            border: 2px solid #450693;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #450693;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: #450693;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #8C00FF;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #FF3F7F;
+            box-shadow: 0 0 0 3px rgba(255, 63, 127, 0.1);
+        }
+        
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .experience-item {
+            border: 2px solid #FFC400;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            height: 4px;
+            background: #FFC400;
+            border-radius: 12px 12px 0 0;
+        }
+        
+        .experience-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .delete-btn {
+            background: #EF4444;
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .delete-btn:hover {
+            background: #DC2626;
+        }
+        
+        .add-btn {
+            background: #10B981;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .add-btn:hover {
+            background: #059669;
+        }
+        
+        .preview-link {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #FF3F7F;
+            color: white;
+            padding: 1rem;
+            border-radius: 50%;
+            text-decoration: none;
+            box-shadow: 0 8px 25px rgba(255, 63, 127, 0.4);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        
+        .preview-link:hover {
+            background: #8C00FF;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .admin-container {
+                padding: 1rem;
+            }
+            
+            .admin-title {
+                font-size: 2rem;
+            }
+            
+            .admin-actions {
+                flex-direction: column;
+            }
+            
+            .editor-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Admin Header -->
+        <div class="admin-header">
+            <h1 class="admin-title">Resume Editor</h1>
+            <p class="admin-subtitle">Edit your resume content and see changes in real-time</p>
+            <div class="admin-actions">
+                <button class="btn btn-primary" onclick="saveData()">
+                    💾 Save Changes
+                </button>
+                <button class="btn btn-secondary" onclick="loadData()">
+                    🔄 Load Data
+                </button>
+                <a href="index.html" class="btn btn-success" target="_blank">
+                    👀 Preview Resume
+                </a>
+            </div>
+        </div>
+
+        <!-- Personal Information -->
+        <div class="editor-section">
+            <h2 class="section-title">
+                👤 Personal Information
+            </h2>
+            <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <input type="text" class="form-input" id="fullName" value="Amos Cheruiyot">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Job Title</label>
+                <input type="text" class="form-input" id="jobTitle" value="Senior Technical Support Specialist & Product Manager">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Bio/Description</label>
+                <textarea class="form-input form-textarea" id="bio">Passionate technology professional with extensive experience in mobile, native and web technologies. Proven track record in developing innovative solutions and managing products in fast-paced Fintech environments.</textarea>
+            </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="editor-section">
+            <h2 class="section-title">
+                📧 Contact Information
+            </h2>
+            <div class="form-group">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-input" id="email" value="amoscheruiyot22@gmail.com">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Phone</label>
+                <input type="text" class="form-input" id="phone" value="+254 712 255 539">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Location</label>
+                <input type="text" class="form-input" id="location" value="Nairobi, Kenya">
+            </div>
+        </div>
+
+        <!-- Professional Profile -->
+        <div class="editor-section">
+            <h2 class="section-title">
+                📝 Professional Profile
+            </h2>
+            <div class="form-group">
+                <label class="form-label">About Me</label>
+                <textarea class="form-input form-textarea" id="aboutMe">Dynamic and results-driven technology professional with 5+ years of proven experience in technical support, product management, and software development within high-growth Fintech environments.</textarea>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Specialization</label>
+                <textarea class="form-input form-textarea" id="specialization">Specialized in translating complex technical requirements into user-friendly solutions, with a strong focus on customer experience optimization and cross-functional team collaboration.</textarea>
+            </div>
+        </div>
+
+        <!-- Education -->
+        <div class="editor-section">
+            <h2 class="section-title">
+                🎓 Education
+            </h2>
+            <div class="form-group">
+                <label class="form-label">Degree</label>
+                <input type="text" class="form-input" id="degree" value="BSc. Microprocessor Technology and Instrumentation">
+            </div>
+            <div class="form-group">
+                <label class="form-label">University</label>
+                <input type="text" class="form-input" id="university" value="University of Nairobi">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Years</label>
+                <input type="text" class="form-input" id="educationYears" value="2014-2018">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Description</label>
+                <textarea class="form-input form-textarea" id="educationDesc">Specialized in embedded systems, instrumentation, and digital signal processing</textarea>
+            </div>
+        </div>
+
+        <!-- Experience -->
+        <div class="editor-section">
+            <h2 class="section-title">
+                💼 Professional Experience
+            </h2>
+            <div id="experienceContainer">
+                <!-- Experience items will be dynamically populated here -->
+            </div>
+            <button class="add-btn" onclick="addExperience()">+ Add Experience</button>
+        </div>
+
+        <!-- Skills -->
+        <div class="editor-section">
+            <h2 class="section-title">
+                🛠️ Skills & Competencies
+            </h2>
+            <div class="form-group">
+                <label class="form-label">Skills (comma-separated)</label>
+                <textarea class="form-input form-textarea" id="skills">Technical Support, Data Analytics, Software Testing, Product Management, Web Development, SQL Database, Linux Administration, Network Management, Version Control, UX Optimization</textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- Preview Link -->
+    <a href="index.html" class="preview-link" target="_blank" title="Preview Resume">
+        👁️
+    </a>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

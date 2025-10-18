@@ -40,6 +40,56 @@
         }
     </script>
     <link href="css/style.css" rel="stylesheet">
+    <style>
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            /* Mobile Navigation */
+            .desktop-nav { display: none !important; }
+            .mobile-menu-btn { display: block !important; }
+            
+            /* Hero Section Mobile */
+            .hero-title { font-size: 2.5rem !important; }
+            .hero-subtitle { font-size: 1.25rem !important; }
+            .hero-description { font-size: 1rem !important; }
+            .hero-card { padding: 2rem 1.5rem !important; }
+            .hero-buttons { flex-direction: column !important; gap: 0.75rem !important; }
+            
+            /* About Section Mobile */
+            .about-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+            .section-title { font-size: 2.5rem !important; }
+            
+            /* Experience Section Mobile */
+            .experience-card { padding: 1.5rem !important; }
+            .experience-header { flex-direction: column !important; align-items: flex-start !important; gap: 1rem !important; }
+            
+            /* Skills Section Mobile */
+            .skills-card { padding: 2rem 1.5rem !important; }
+            .skills-grid { gap: 0.5rem !important; }
+            .skill-tag { padding: 0.5rem 1rem !important; font-size: 0.75rem !important; }
+            
+            /* Contact Section Mobile */
+            .contact-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
+            .contact-card-main { padding: 2rem 1.5rem !important; }
+            
+            /* General Mobile Spacing */
+            .section-padding { padding: 3rem 1rem !important; }
+        }
+        
+        @media (max-width: 480px) {
+            /* Extra small mobile adjustments */
+            .hero-title { font-size: 2rem !important; }
+            .section-title { font-size: 2rem !important; }
+            .hero-card { padding: 1.5rem 1rem !important; }
+            .section-padding { padding: 2rem 0.75rem !important; }
+        }
+        
+        @media (min-width: 769px) and (max-width: 1024px) {
+            /* Tablet adjustments */
+            .hero-title { font-size: 3.5rem !important; }
+            .section-title { font-size: 3rem !important; }
+            .about-grid { gap: 2rem !important; }
+        }
+    </style>
 </head>
 <body style="font-family: 'Inter', sans-serif; background: #ffffff; position: relative; overflow-x: hidden; margin: 0; padding: 0;">
     <!-- Global Background Pattern -->
@@ -62,7 +112,7 @@
                    onmouseover="this.style.color='#FF3F7F'" onmouseout="this.style.color='#450693'">
                     AMOS CHERUIYOT
                 </a>
-                <div style="display: flex; gap: 2rem;">
+                <div class="desktop-nav" style="display: flex; gap: 2rem;">
                     <a href="#home" style="color: #450693; font-weight: 500; text-decoration: none; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s;" 
                        onmouseover="this.style.backgroundColor='#FF3F7F'; this.style.color='#ffffff'" 
                        onmouseout="this.style.backgroundColor='transparent'; this.style.color='#450693'">Home</a>
@@ -79,7 +129,7 @@
                        onmouseover="this.style.backgroundColor='#FF3F7F'; this.style.color='#ffffff'" 
                        onmouseout="this.style.backgroundColor='transparent'; this.style.color='#450693'">Contact</a>
                 </div>
-                <button id="mobile-menu-btn" style="display: none; padding: 0.5rem; border-radius: 8px; background: transparent; border: none; color: #450693; transition: all 0.3s;" 
+                <button id="mobile-menu-btn" class="mobile-menu-btn" style="display: none; padding: 0.5rem; border-radius: 8px; background: transparent; border: none; color: #450693; transition: all 0.3s;" 
                         onmouseover="this.style.backgroundColor='#f8f9ff'" 
                         onmouseout="this.style.backgroundColor='transparent'">
                     <svg style="width: 24px; height: 24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -94,22 +144,22 @@
     <section id="home" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding-top: 4rem; background: transparent;">
         
         <div style="position: relative; z-index: 10; text-align: center; padding: 0 2rem; max-width: 1000px;">
-            <div style="background: #ffffff; border-radius: 24px; padding: 4rem 3rem; box-shadow: 0 25px 50px rgba(69, 6, 147, 0.15); border: 2px solid #450693; position: relative;">
+            <div class="hero-card" style="background: #ffffff; border-radius: 24px; padding: 4rem 3rem; box-shadow: 0 25px 50px rgba(69, 6, 147, 0.15); border: 2px solid #450693; position: relative;">
                 <!-- Accent Border -->
                 <div style="position: absolute; top: -2px; left: -2px; right: -2px; height: 6px; background: #FF3F7F; border-radius: 24px 24px 0 0;"></div>
                 
-                <h1 style="font-size: 4rem; font-weight: 900; margin-bottom: 1.5rem; color: #450693; line-height: 1.1;">
+                <h1 class="hero-title" style="font-size: 4rem; font-weight: 900; margin-bottom: 1.5rem; color: #450693; line-height: 1.1;">
                     Amos Cheruiyot
                 </h1>
-                <p style="font-size: 1.5rem; color: #8C00FF; margin-bottom: 1rem; font-weight: 600;">
+                <p class="hero-subtitle" style="font-size: 1.5rem; color: #8C00FF; margin-bottom: 1rem; font-weight: 600;">
                     Senior Technical Support Specialist & Product Manager
                 </p>
-                <p style="font-size: 1.125rem; color: #666666; margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+                <p class="hero-description" style="font-size: 1.125rem; color: #666666; margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
                     Passionate technology professional with extensive experience in mobile, native and web technologies. 
                     Proven track record in developing innovative solutions and managing products in fast-paced Fintech environments.
                 </p>
                 
-                <div style="display: flex; flex-direction: column; gap: 1rem; align-items: center;">
+                <div class="hero-buttons" style="display: flex; flex-direction: column; gap: 1rem; align-items: center;">
                     <a href="#experience" style="display: inline-block; padding: 1rem 2.5rem; background: #FF3F7F; color: #ffffff; border-radius: 50px; font-weight: 600; text-decoration: none; min-width: 200px; transition: all 0.3s; box-shadow: 0 4px 15px rgba(255, 63, 127, 0.3);" 
                        onmouseover="this.style.backgroundColor='#8C00FF'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(140, 0, 255, 0.4)'" 
                        onmouseout="this.style.backgroundColor='#FF3F7F'; this.style.transform='translateY(0px)'; this.style.boxShadow='0 4px 15px rgba(255, 63, 127, 0.3)'">
@@ -133,12 +183,12 @@
 
 
     <!-- About Section -->
-    <section id="about" style="padding: 5rem 2rem; background: transparent; position: relative;">
+    <section id="about" class="section-padding" style="padding: 5rem 2rem; background: transparent; position: relative;">
         <div style="max-width: 1200px; margin: 0 auto; position: relative;">
-            <h2 style="font-size: 3.5rem; font-weight: 900; margin-bottom: 3rem; text-align: center; color: #450693;">
+            <h2 class="section-title" style="font-size: 3.5rem; font-weight: 900; margin-bottom: 3rem; text-align: center; color: #450693;">
                 Professional Profile
             </h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
+            <div class="about-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
                 <div style="background: #ffffff; border-radius: 24px; padding: 2.5rem; box-shadow: 0 15px 35px rgba(69, 6, 147, 0.1); border: 2px solid #450693; position: relative;">
                     <div style="position: absolute; top: -2px; left: -2px; right: -2px; height: 6px; background: #FF3F7F; border-radius: 24px 24px 0 0;"></div>
                     <h3 style="font-size: 2rem; font-weight: 700; color: #450693; margin-bottom: 1.5rem;">About Me</h3>
@@ -188,9 +238,9 @@
     </section>
 
     <!-- Experience Section - COMPLETELY REDESIGNED -->
-    <section id="experience" style="padding: 5rem 1rem; background: transparent;">
+    <section id="experience" class="section-padding" style="padding: 5rem 1rem; background: transparent;">
         <div style="max-width: 1200px; margin: 0 auto;">
-            <h2 style="font-size: 3.5rem; font-weight: 900; text-align: center; margin-bottom: 3rem; color: #450693;">
+            <h2 class="section-title" style="font-size: 3.5rem; font-weight: 900; text-align: center; margin-bottom: 3rem; color: #450693;">
                 Professional Experience
             </h2>
             
@@ -198,13 +248,13 @@
             <div style="display: flex; flex-direction: column; gap: 2rem;">
                 
                 <!-- Job 1: Tech Excellence Senior Associate -->
-                <div style="background: #ffffff; border-radius: 16px; padding: 2rem; box-shadow: 0 10px 25px rgba(69, 6, 147, 0.1); border: 2px solid #450693; transition: all 0.3s ease; position: relative;" 
+                <div class="experience-card" style="background: #ffffff; border-radius: 16px; padding: 2rem; box-shadow: 0 10px 25px rgba(69, 6, 147, 0.1); border: 2px solid #450693; transition: all 0.3s ease; position: relative;" 
                      onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 20px 40px rgba(69, 6, 147, 0.15)'" 
                      onmouseout="this.style.transform='translateY(0px)'; this.style.boxShadow='0 10px 25px rgba(69, 6, 147, 0.1)'">
                     <div style="position: absolute; top: -2px; left: -2px; right: -2px; height: 4px; background: #FF3F7F; border-radius: 16px 16px 0 0;"></div>
                     <div style="border-left: 4px solid #FF3F7F; padding-left: 1.5rem;">
                         <!-- Header -->
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+                        <div class="experience-header" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
                             <div>
                                 <h3 style="font-size: 1.5rem; font-weight: 700; color: #450693; margin-bottom: 0.5rem;">Tech Excellence Senior Associate</h3>
                                 <p style="font-size: 1.25rem; font-weight: 600; color: #FF3F7F; margin-bottom: 0.25rem;">Kune Food Lab</p>
@@ -350,13 +400,13 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" style="padding: 5rem 2rem; background: transparent; position: relative;">
+    <section id="skills" class="section-padding" style="padding: 5rem 2rem; background: transparent; position: relative;">
         <div style="max-width: 1200px; margin: 0 auto; position: relative;">
-            <h2 style="font-size: 3.5rem; font-weight: 900; text-align: center; margin-bottom: 3rem; color: #450693;">
+            <h2 class="section-title" style="font-size: 3.5rem; font-weight: 900; text-align: center; margin-bottom: 3rem; color: #450693;">
                 Core Competencies
             </h2>
             <!-- Core Competencies & Achievements -->
-            <div style="background: #ffffff; border-radius: 24px; padding: 3rem; box-shadow: 0 20px 40px rgba(69, 6, 147, 0.1); border: 2px solid #450693; margin: 0 auto; max-width: 1000px; position: relative;">
+            <div class="skills-card" style="background: #ffffff; border-radius: 24px; padding: 3rem; box-shadow: 0 20px 40px rgba(69, 6, 147, 0.1); border: 2px solid #450693; margin: 0 auto; max-width: 1000px; position: relative;">
                 <div style="position: absolute; top: -2px; left: -2px; right: -2px; height: 6px; background: #FF3F7F; border-radius: 24px 24px 0 0;"></div>
                 <!-- Technical Skills Section -->
                 <div style="margin-bottom: 3rem;">
@@ -365,8 +415,8 @@
                     <!-- Skills Grid -->
                     <div style="margin-bottom: 2.5rem;">
                         <h4 style="font-size: 1.5rem; font-weight: 700; color: #8C00FF; margin-bottom: 1.5rem; text-align: center;">Technical Expertise</h4>
-                        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem;">
-                            <span style="display: inline-flex; align-items: center; padding: 0.75rem 1.25rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; background: #FF3F7F; color: #ffffff; transition: all 0.3s;" 
+                        <div class="skills-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem;">
+                            <span class="skill-tag" style="display: inline-flex; align-items: center; padding: 0.75rem 1.25rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; background: #FF3F7F; color: #ffffff; transition: all 0.3s;" 
                                   onmouseover="this.style.backgroundColor='#8C00FF'" 
                                   onmouseout="this.style.backgroundColor='#FF3F7F'">
                                 🛠️ Technical Support
@@ -446,18 +496,18 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" style="padding: 5rem 2rem; background: transparent; position: relative;">
+    <section id="contact" class="section-padding" style="padding: 5rem 2rem; background: transparent; position: relative;">
         <div style="max-width: 800px; margin: 0 auto; text-align: center; position: relative;">
-            <h2 style="font-size: 3.5rem; font-weight: 900; margin-bottom: 2rem; color: #450693;">
+            <h2 class="section-title" style="font-size: 3.5rem; font-weight: 900; margin-bottom: 2rem; color: #450693;">
                 Let's Connect
             </h2>
-            <div style="background: #ffffff; border-radius: 24px; padding: 3rem; box-shadow: 0 20px 40px rgba(69, 6, 147, 0.1); border: 2px solid #450693; position: relative;">
+            <div class="contact-card-main" style="background: #ffffff; border-radius: 24px; padding: 3rem; box-shadow: 0 20px 40px rgba(69, 6, 147, 0.1); border: 2px solid #450693; position: relative;">
                 <div style="position: absolute; top: -2px; left: -2px; right: -2px; height: 6px; background: #FF3F7F; border-radius: 24px 24px 0 0;"></div>
                 <p style="font-size: 1.25rem; color: #666666; margin-bottom: 2.5rem; font-weight: 500;">
                     Ready to discuss opportunities and collaborate on innovative projects? 
                     <span style="color: #FF3F7F; font-weight: 700;">Let's start a conversation!</span>
                 </p>
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
+                <div class="contact-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
                     <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem; color: #450693; background: #f8f9ff; padding: 1.5rem; border-radius: 16px; border: 2px solid #8C00FF;">
                         <div style="width: 48px; height: 48px; background: #FF3F7F; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                             <svg style="width: 24px; height: 24px; color: white;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
