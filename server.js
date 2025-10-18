@@ -9,6 +9,7 @@ const http = require('http');
 const WebSocket = require('ws');
 const authRoutes = require('./admin/routes/auth');
 const portfolioRoutes = require('./admin/routes/portfolio');
+const enhancedRoutes = require('./admin/routes/enhanced');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -39,6 +40,10 @@ app.use('/admin', express.static(path.join(__dirname, 'admin/public')));
 // Admin routes
 app.use('/admin', authRoutes);
 app.use('/admin', portfolioRoutes);
+app.use('/admin', enhancedRoutes);
+
+// Preview routes
+app.use('/admin', require('./admin/routes/preview'));
 
 // WebSocket endpoint info for debugging
 app.get('/api/ws-info', (req, res) => {

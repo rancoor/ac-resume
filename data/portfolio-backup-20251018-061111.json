@@ -35,7 +35,65 @@
       }
     ]
   },
-  "experience": [],
+  "experience": [
+    {
+      "id": 1760756813372,
+      "title": "New Position",
+      "company": "Company Name",
+      "location": "City, Country",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "current": false,
+      "achievements": [
+        "Add your key achievements here"
+      ]
+    },
+    {
+      "id": 1,
+      "title": "Tech Excellence Senior Associate",
+      "company": "Kune Food Lab",
+      "location": "Nairobi, Kenya",
+      "startDate": "July 2021",
+      "endDate": "May 2022",
+      "current": false,
+      "achievements": [
+        "Led cross-departmental customer order escalation resolution, improving customer satisfaction by 30%",
+        "Translated complex business requirements into technical specifications using Jira, streamlining development workflows",
+        "Architected and managed PoS systems, optimizing menu management and cost tracking processes",
+        "Developed comprehensive training materials and automation tools, reducing operational overhead by 25%"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Junior Product Manager",
+      "company": "SafeBoda",
+      "location": "Kampala, Uganda",
+      "startDate": "January 2021",
+      "endDate": "May 2021",
+      "current": false,
+      "achievements": [
+        "Collaborated with cross-functional development teams to translate customer requirements into actionable product features",
+        "Managed complete product lifecycles and defined strategic roadmaps aligned with business objectives",
+        "Developed comprehensive strategic vision for feature requests, balancing business and technical requirements",
+        "Delivered user-centric solutions and analyzed technical impact on quarterly performance metrics"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Senior Product Support Associate",
+      "company": "SafeBoda",
+      "location": "Nairobi, Kenya",
+      "startDate": "March 2019",
+      "endDate": "April 2021",
+      "current": false,
+      "achievements": [
+        "Led website maintenance and development initiatives, ensuring optimal performance and user experience",
+        "Conducted comprehensive app diagnostics and troubleshooting, resolving critical technical issues efficiently",
+        "Spearheaded UI/UX testing initiatives and contributed innovative feature suggestions for product enhancement",
+        "Managed high-priority customer escalations and developed anti-fraud strategies as key Fraud team member"
+      ]
+    }
+  ],
   "skills": [
     {
       "name": "Technical Support",

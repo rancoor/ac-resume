@@ -836,7 +836,28 @@ class ResumeCMS {
 
     // Preview and Export
     openPreview() {
-        window.open('index.html', '_blank');
+        // First, update the preview with current data
+        this.updatePreviewData();
+        // Then open the preview page
+        window.open('/admin/preview', '_blank');
+    }
+    
+    async updatePreviewData() {
+        try {
+            const response = await fetch('/admin/api/preview', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(this.data)
+            });
+            
+            if (!response.ok) {
+                console.warn('Preview update failed');
+            }
+        } catch (error) {
+            console.error('Error updating preview:', error);
+        }
     }
 
     updatePreview() {
