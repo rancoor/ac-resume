@@ -42,6 +42,18 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body style="font-family: 'Inter', sans-serif; background: #ffffff; position: relative; overflow-x: hidden; margin: 0; padding: 0;">
+    <!-- Global Background Pattern -->
+    <div style="position: fixed; inset: 0; z-index: -1; background: #ffffff;">
+        <!-- Hero Background Pattern Applied Globally -->
+        <div style="position: absolute; inset: 0; background-image: radial-gradient(circle at 20% 20%, rgba(255, 196, 0, 0.05) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255, 63, 127, 0.05) 0%, transparent 50%), radial-gradient(circle at 50% 50%, rgba(140, 0, 255, 0.03) 0%, transparent 50%);"></div>
+        
+        <!-- Decorative Elements -->
+        <div style="position: absolute; top: 20%; left: 10%; width: 100px; height: 100px; background: #FFC400; border-radius: 50%; opacity: 0.1;"></div>
+        <div style="position: absolute; top: 60%; right: 15%; width: 150px; height: 150px; background: #FF3F7F; border-radius: 50%; opacity: 0.08;"></div>
+        <div style="position: absolute; bottom: 30%; left: 20%; width: 80px; height: 80px; background: #8C00FF; border-radius: 50%; opacity: 0.06;"></div>
+        <div style="position: absolute; top: 40%; right: 5%; width: 60px; height: 60px; background: #450693; border-radius: 50%; opacity: 0.04;"></div>
+        <div style="position: absolute; bottom: 20%; right: 30%; width: 120px; height: 120px; background: #FFC400; border-radius: 50%; opacity: 0.06;"></div>
+    </div>
     <!-- Navigation -->
     <nav style="position: fixed; width: 100%; top: 0; z-index: 50; background: #ffffff; border-bottom: 2px solid #450693; box-shadow: 0 4px 20px rgba(69, 6, 147, 0.1);">
         <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
@@ -79,17 +91,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding-top: 4rem; background: #ffffff;">
-        <!-- Clean Background Pattern -->
-        <div style="position: absolute; inset: 0; background: #ffffff;">
-            <!-- Subtle Pattern -->
-            <div style="position: absolute; inset: 0; background-image: radial-gradient(circle at 20% 20%, rgba(255, 196, 0, 0.05) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255, 63, 127, 0.05) 0%, transparent 50%), radial-gradient(circle at 50% 50%, rgba(140, 0, 255, 0.03) 0%, transparent 50%);"></div>
-            
-            <!-- Simple Decorative Elements -->
-            <div style="position: absolute; top: 20%; left: 10%; width: 100px; height: 100px; background: #FFC400; border-radius: 50%; opacity: 0.1;"></div>
-            <div style="position: absolute; top: 60%; right: 15%; width: 150px; height: 150px; background: #FF3F7F; border-radius: 50%; opacity: 0.08;"></div>
-            <div style="position: absolute; bottom: 30%; left: 20%; width: 80px; height: 80px; background: #8C00FF; border-radius: 50%; opacity: 0.06;"></div>
-        </div>
+    <section id="home" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding-top: 4rem; background: transparent;">
         
         <div style="position: relative; z-index: 10; text-align: center; padding: 0 2rem; max-width: 1000px;">
             <div style="background: #ffffff; border-radius: 24px; padding: 4rem 3rem; box-shadow: 0 25px 50px rgba(69, 6, 147, 0.15); border: 2px solid #450693; position: relative;">
@@ -131,8 +133,7 @@
 
 
     <!-- About Section -->
-    <section id="about" style="padding: 5rem 2rem; background: #f8f9ff; position: relative;">
-        <div style="position: absolute; inset: 0; background-image: radial-gradient(circle at 20% 20%, rgba(255, 196, 0, 0.03) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255, 63, 127, 0.03) 0%, transparent 50%);"></div>
+    <section id="about" style="padding: 5rem 2rem; background: transparent; position: relative;">
         <div style="max-width: 1200px; margin: 0 auto; position: relative;">
             <h2 style="font-size: 3.5rem; font-weight: 900; margin-bottom: 3rem; text-align: center; color: #450693;">
                 Professional Profile
@@ -187,9 +188,9 @@
     </section>
 
     <!-- Experience Section - COMPLETELY REDESIGNED -->
-    <section id="experience" style="padding: 5rem 1rem; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);">
+    <section id="experience" style="padding: 5rem 1rem; background: transparent;">
         <div style="max-width: 1200px; margin: 0 auto;">
-            <h2 style="font-size: 2.5rem; font-weight: 800; text-align: center; margin-bottom: 3rem; color: #1a1625;">
+            <h2 style="font-size: 3.5rem; font-weight: 900; text-align: center; margin-bottom: 3rem; color: #450693;">
                 Professional Experience
             </h2>
             
@@ -197,149 +198,149 @@
             <div style="display: flex; flex-direction: column; gap: 2rem;">
                 
                 <!-- Job 1: Tech Excellence Senior Associate -->
-                <div style="background: #ffffff; border-radius: 16px; padding: 2rem; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 1px solid #e2e8f0; transition: all 0.3s ease;" 
-                     onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.15)'" 
-                     onmouseout="this.style.transform='translateY(0px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.1)'">
-                    
-                    <div style="border-left: 4px solid #7c3aed; padding-left: 1.5rem;">
+                <div style="background: #ffffff; border-radius: 16px; padding: 2rem; box-shadow: 0 10px 25px rgba(69, 6, 147, 0.1); border: 2px solid #450693; transition: all 0.3s ease; position: relative;" 
+                     onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 20px 40px rgba(69, 6, 147, 0.15)'" 
+                     onmouseout="this.style.transform='translateY(0px)'; this.style.boxShadow='0 10px 25px rgba(69, 6, 147, 0.1)'">
+                    <div style="position: absolute; top: -2px; left: -2px; right: -2px; height: 4px; background: #FF3F7F; border-radius: 16px 16px 0 0;"></div>
+                    <div style="border-left: 4px solid #FF3F7F; padding-left: 1.5rem;">
                         <!-- Header -->
                         <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
                             <div>
-                                <h3 style="font-size: 1.5rem; font-weight: 700; color: #1a1625; margin-bottom: 0.5rem;">Tech Excellence Senior Associate</h3>
-                                <p style="font-size: 1.25rem; font-weight: 600; color: #7c3aed; margin-bottom: 0.25rem;">Kune Food Lab</p>
-                                <p style="color: #64748b; font-weight: 500;">Nairobi, Kenya</p>
+                                <h3 style="font-size: 1.5rem; font-weight: 700; color: #450693; margin-bottom: 0.5rem;">Tech Excellence Senior Associate</h3>
+                                <p style="font-size: 1.25rem; font-weight: 600; color: #FF3F7F; margin-bottom: 0.25rem;">Kune Food Lab</p>
+                                <p style="color: #8C00FF; font-weight: 500;">Nairobi, Kenya</p>
                             </div>
-                            <span style="background: #f1f5f9; color: #475569; padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; white-space: nowrap;">July 2021 - May 2022</span>
+                            <span style="background: #FFC400; color: #450693; padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; white-space: nowrap;">July 2021 - May 2022</span>
                         </div>
                         
                         <!-- Achievements -->
                         <div style="display: flex; flex-direction: column; gap: 1rem;">
                             <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                                <div style="width: 8px; height: 8px; background: #7c3aed; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
-                                <p style="color: #374151; font-size: 1rem; line-height: 1.6; font-weight: 500;">Led cross-departmental customer order escalation resolution, improving customer satisfaction by 30%</p>
+                                <div style="width: 8px; height: 8px; background: #FF3F7F; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                                <p style="color: #450693; font-size: 1rem; line-height: 1.6; font-weight: 500;">Led cross-departmental customer order escalation resolution, improving customer satisfaction by 30%</p>
                             </div>
                             <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                                <div style="width: 8px; height: 8px; background: #f97316; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
-                                <p style="color: #374151; font-size: 1rem; line-height: 1.6; font-weight: 500;">Translated complex business requirements into technical specifications using Jira, streamlining development workflows</p>
+                                <div style="width: 8px; height: 8px; background: #FFC400; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                                <p style="color: #450693; font-size: 1rem; line-height: 1.6; font-weight: 500;">Translated complex business requirements into technical specifications using Jira, streamlining development workflows</p>
                             </div>
                             <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                                <div style="width: 8px; height: 8px; background: #2d1b3d; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
-                                <p style="color: #374151; font-size: 1rem; line-height: 1.6; font-weight: 500;">Architected and managed PoS systems, optimizing menu management and cost tracking processes</p>
+                                <div style="width: 8px; height: 8px; background: #8C00FF; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                                <p style="color: #450693; font-size: 1rem; line-height: 1.6; font-weight: 500;">Architected and managed PoS systems, optimizing menu management and cost tracking processes</p>
                             </div>
                             <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                                <div style="width: 8px; height: 8px; background: #7c3aed; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
-                                <p style="color: #374151; font-size: 1rem; line-height: 1.6; font-weight: 500;">Developed comprehensive training materials and automation tools, reducing operational overhead by 25%</p>
+                                <div style="width: 8px; height: 8px; background: #450693; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                                <p style="color: #450693; font-size: 1rem; line-height: 1.6; font-weight: 500;">Developed comprehensive training materials and automation tools, reducing operational overhead by 25%</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Job 2: Junior Product Manager -->
-                <div style="background: #ffffff; border-radius: 16px; padding: 2rem; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 1px solid #e2e8f0; transition: all 0.3s ease;" 
-                     onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.15)'" 
-                     onmouseout="this.style.transform='translateY(0px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.1)'">
-                    
-                    <div style="border-left: 4px solid #f97316; padding-left: 1.5rem;">
+                <div style="background: #ffffff; border-radius: 16px; padding: 2rem; box-shadow: 0 10px 25px rgba(69, 6, 147, 0.1); border: 2px solid #450693; transition: all 0.3s ease; position: relative;" 
+                     onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 20px 40px rgba(69, 6, 147, 0.15)'" 
+                     onmouseout="this.style.transform='translateY(0px)'; this.style.boxShadow='0 10px 25px rgba(69, 6, 147, 0.1)'">
+                    <div style="position: absolute; top: -2px; left: -2px; right: -2px; height: 4px; background: #FFC400; border-radius: 16px 16px 0 0;"></div>
+                    <div style="border-left: 4px solid #FFC400; padding-left: 1.5rem;">
                         <!-- Header -->
                         <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
                             <div>
-                                <h3 style="font-size: 1.5rem; font-weight: 700; color: #1a1625; margin-bottom: 0.5rem;">Junior Product Manager</h3>
-                                <p style="font-size: 1.25rem; font-weight: 600; color: #f97316; margin-bottom: 0.25rem;">SafeBoda</p>
-                                <p style="color: #64748b; font-weight: 500;">Kampala, Uganda</p>
+                                <h3 style="font-size: 1.5rem; font-weight: 700; color: #450693; margin-bottom: 0.5rem;">Junior Product Manager</h3>
+                                <p style="font-size: 1.25rem; font-weight: 600; color: #FFC400; margin-bottom: 0.25rem;">SafeBoda</p>
+                                <p style="color: #8C00FF; font-weight: 500;">Kampala, Uganda</p>
                             </div>
-                            <span style="background: #f1f5f9; color: #475569; padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; white-space: nowrap;">January 2021 - May 2021</span>
+                            <span style="background: #FF3F7F; color: #ffffff; padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; white-space: nowrap;">January 2021 - May 2021</span>
                         </div>
                         
                         <!-- Achievements -->
                         <div style="display: flex; flex-direction: column; gap: 1rem;">
                             <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                                <div style="width: 8px; height: 8px; background: #f97316; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
-                                <p style="color: #374151; font-size: 1rem; line-height: 1.6; font-weight: 500;">Collaborated with cross-functional development teams to translate customer requirements into actionable product features</p>
+                                <div style="width: 8px; height: 8px; background: #FFC400; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                                <p style="color: #450693; font-size: 1rem; line-height: 1.6; font-weight: 500;">Collaborated with cross-functional development teams to translate customer requirements into actionable product features</p>
                             </div>
                             <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                                <div style="width: 8px; height: 8px; background: #7c3aed; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
-                                <p style="color: #374151; font-size: 1rem; line-height: 1.6; font-weight: 500;">Managed complete product lifecycles and defined strategic roadmaps aligned with business objectives</p>
+                                <div style="width: 8px; height: 8px; background: #8C00FF; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                                <p style="color: #450693; font-size: 1rem; line-height: 1.6; font-weight: 500;">Managed complete product lifecycles and defined strategic roadmaps aligned with business objectives</p>
                             </div>
                             <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                                <div style="width: 8px; height: 8px; background: #2d1b3d; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
-                                <p style="color: #374151; font-size: 1rem; line-height: 1.6; font-weight: 500;">Developed comprehensive strategic vision for feature requests, balancing business and technical requirements</p>
+                                <div style="width: 8px; height: 8px; background: #FF3F7F; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                                <p style="color: #450693; font-size: 1rem; line-height: 1.6; font-weight: 500;">Developed comprehensive strategic vision for feature requests, balancing business and technical requirements</p>
                             </div>
                             <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                                <div style="width: 8px; height: 8px; background: #f97316; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
-                                <p style="color: #374151; font-size: 1rem; line-height: 1.6; font-weight: 500;">Delivered user-centric solutions and analyzed technical impact on quarterly performance metrics</p>
+                                <div style="width: 8px; height: 8px; background: #450693; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                                <p style="color: #450693; font-size: 1rem; line-height: 1.6; font-weight: 500;">Delivered user-centric solutions and analyzed technical impact on quarterly performance metrics</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Job 3: Senior Product Support Associate -->
-                <div style="background: #ffffff; border-radius: 16px; padding: 2rem; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 1px solid #e2e8f0; transition: all 0.3s ease;" 
-                     onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.15)'" 
-                     onmouseout="this.style.transform='translateY(0px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.1)'">
-                    
-                    <div style="border-left: 4px solid #2d1b3d; padding-left: 1.5rem;">
+                <div style="background: #ffffff; border-radius: 16px; padding: 2rem; box-shadow: 0 10px 25px rgba(69, 6, 147, 0.1); border: 2px solid #450693; transition: all 0.3s ease; position: relative;" 
+                     onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 20px 40px rgba(69, 6, 147, 0.15)'" 
+                     onmouseout="this.style.transform='translateY(0px)'; this.style.boxShadow='0 10px 25px rgba(69, 6, 147, 0.1)'">
+                    <div style="position: absolute; top: -2px; left: -2px; right: -2px; height: 4px; background: #8C00FF; border-radius: 16px 16px 0 0;"></div>
+                    <div style="border-left: 4px solid #8C00FF; padding-left: 1.5rem;">
                         <!-- Header -->
                         <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
                             <div>
-                                <h3 style="font-size: 1.5rem; font-weight: 700; color: #1a1625; margin-bottom: 0.5rem;">Senior Product Support Associate</h3>
-                                <p style="font-size: 1.25rem; font-weight: 600; color: #2d1b3d; margin-bottom: 0.25rem;">SafeBoda</p>
-                                <p style="color: #64748b; font-weight: 500;">Nairobi, Kenya</p>
+                                <h3 style="font-size: 1.5rem; font-weight: 700; color: #450693; margin-bottom: 0.5rem;">Senior Product Support Associate</h3>
+                                <p style="font-size: 1.25rem; font-weight: 600; color: #8C00FF; margin-bottom: 0.25rem;">SafeBoda</p>
+                                <p style="color: #FF3F7F; font-weight: 500;">Nairobi, Kenya</p>
                             </div>
-                            <span style="background: #f1f5f9; color: #475569; padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; white-space: nowrap;">March 2019 - April 2021</span>
+                            <span style="background: #8C00FF; color: #ffffff; padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; white-space: nowrap;">March 2019 - April 2021</span>
                         </div>
                         
                         <!-- Achievements -->
                         <div style="display: flex; flex-direction: column; gap: 1rem;">
                             <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                                <div style="width: 8px; height: 8px; background: #2d1b3d; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
-                                <p style="color: #374151; font-size: 1rem; line-height: 1.6; font-weight: 500;">Led website maintenance and development initiatives, ensuring optimal performance and user experience</p>
+                                <div style="width: 8px; height: 8px; background: #8C00FF; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                                <p style="color: #450693; font-size: 1rem; line-height: 1.6; font-weight: 500;">Led website maintenance and development initiatives, ensuring optimal performance and user experience</p>
                             </div>
                             <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                                <div style="width: 8px; height: 8px; background: #7c3aed; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
-                                <p style="color: #374151; font-size: 1rem; line-height: 1.6; font-weight: 500;">Conducted comprehensive app diagnostics and troubleshooting, resolving critical technical issues efficiently</p>
+                                <div style="width: 8px; height: 8px; background: #FF3F7F; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                                <p style="color: #450693; font-size: 1rem; line-height: 1.6; font-weight: 500;">Conducted comprehensive app diagnostics and troubleshooting, resolving critical technical issues efficiently</p>
                             </div>
                             <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                                <div style="width: 8px; height: 8px; background: #f97316; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
-                                <p style="color: #374151; font-size: 1rem; line-height: 1.6; font-weight: 500;">Spearheaded UI/UX testing initiatives and contributed innovative feature suggestions for product enhancement</p>
+                                <div style="width: 8px; height: 8px; background: #FFC400; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                                <p style="color: #450693; font-size: 1rem; line-height: 1.6; font-weight: 500;">Spearheaded UI/UX testing initiatives and contributed innovative feature suggestions for product enhancement</p>
                             </div>
                             <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                                <div style="width: 8px; height: 8px; background: #2d1b3d; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
-                                <p style="color: #374151; font-size: 1rem; line-height: 1.6; font-weight: 500;">Managed high-priority customer escalations and developed anti-fraud strategies as key Fraud team member</p>
+                                <div style="width: 8px; height: 8px; background: #450693; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                                <p style="color: #450693; font-size: 1rem; line-height: 1.6; font-weight: 500;">Managed high-priority customer escalations and developed anti-fraud strategies as key Fraud team member</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Job 4: Early Career -->
-                <div style="background: #ffffff; border-radius: 16px; padding: 2rem; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 1px solid #e2e8f0; transition: all 0.3s ease;" 
-                     onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.15)'" 
-                     onmouseout="this.style.transform='translateY(0px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.1)'">
-                    
-                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #1a1625; margin-bottom: 1.5rem;">Early Career Foundation</h3>
+                <div style="background: #ffffff; border-radius: 16px; padding: 2rem; box-shadow: 0 10px 25px rgba(69, 6, 147, 0.1); border: 2px solid #450693; transition: all 0.3s ease; position: relative;" 
+                     onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 20px 40px rgba(69, 6, 147, 0.15)'" 
+                     onmouseout="this.style.transform='translateY(0px)'; this.style.boxShadow='0 10px 25px rgba(69, 6, 147, 0.1)'">
+                    <div style="position: absolute; top: -2px; left: -2px; right: -2px; height: 4px; background: #450693; border-radius: 16px 16px 0 0;"></div>
+                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #450693; margin-bottom: 1.5rem;">Early Career Foundation</h3>
                     
                     <div style="display: flex; flex-direction: column; gap: 2rem;">
                         <!-- Intern Job 1 -->
-                        <div style="border-left: 4px solid #10b981; padding-left: 1.5rem;">
+                        <div style="border-left: 4px solid #FF3F7F; padding-left: 1.5rem;">
                             <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem;">
                                 <div>
-                                    <p style="font-size: 1.125rem; font-weight: 600; color: #1a1625; margin-bottom: 0.25rem;">Product Support Intern</p>
-                                    <p style="font-weight: 600; color: #10b981;">SafeBoda - Nairobi, Kenya</p>
+                                    <p style="font-size: 1.125rem; font-weight: 600; color: #450693; margin-bottom: 0.25rem;">Product Support Intern</p>
+                                    <p style="font-weight: 600; color: #FF3F7F;">SafeBoda - Nairobi, Kenya</p>
                                 </div>
-                                <span style="background: #f1f5f9; color: #475569; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600; white-space: nowrap;">Dec 2018 - Mar 2019</span>
+                                <span style="background: #FF3F7F; color: #ffffff; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600; white-space: nowrap;">Dec 2018 - Mar 2019</span>
                             </div>
-                            <p style="color: #374151; font-size: 1rem; line-height: 1.6; font-weight: 500;">Conducted driver onboarding processes, performed market research analysis, and provided first-line technical support</p>
+                            <p style="color: #450693; font-size: 1rem; line-height: 1.6; font-weight: 500;">Conducted driver onboarding processes, performed market research analysis, and provided first-line technical support</p>
                         </div>
                         
                         <!-- Intern Job 2 -->
-                        <div style="border-left: 4px solid #eab308; padding-left: 1.5rem;">
+                        <div style="border-left: 4px solid #FFC400; padding-left: 1.5rem;">
                             <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem;">
                                 <div>
-                                    <p style="font-size: 1.125rem; font-weight: 600; color: #1a1625; margin-bottom: 0.25rem;">Technical Support Intern</p>
-                                    <p style="font-weight: 600; color: #eab308;">Internet Solutions KE - Nairobi, Kenya</p>
+                                    <p style="font-size: 1.125rem; font-weight: 600; color: #450693; margin-bottom: 0.25rem;">Technical Support Intern</p>
+                                    <p style="font-weight: 600; color: #FFC400;">Internet Solutions KE - Nairobi, Kenya</p>
                                 </div>
-                                <span style="background: #f1f5f9; color: #475569; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600; white-space: nowrap;">Sep 2016 - Dec 2016</span>
+                                <span style="background: #FFC400; color: #450693; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600; white-space: nowrap;">Sep 2016 - Dec 2016</span>
                             </div>
-                            <p style="color: #374151; font-size: 1rem; line-height: 1.6; font-weight: 500;">Managed network infrastructure support, client ticket resolution, and cloud service administration</p>
+                            <p style="color: #450693; font-size: 1rem; line-height: 1.6; font-weight: 500;">Managed network infrastructure support, client ticket resolution, and cloud service administration</p>
                         </div>
                     </div>
                 </div>
@@ -349,8 +350,7 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" style="padding: 5rem 2rem; background: #ffffff; position: relative;">
-        <div style="position: absolute; inset: 0; background-image: radial-gradient(circle at 30% 30%, rgba(140, 0, 255, 0.03) 0%, transparent 50%), radial-gradient(circle at 70% 70%, rgba(255, 196, 0, 0.03) 0%, transparent 50%);"></div>
+    <section id="skills" style="padding: 5rem 2rem; background: transparent; position: relative;">
         <div style="max-width: 1200px; margin: 0 auto; position: relative;">
             <h2 style="font-size: 3.5rem; font-weight: 900; text-align: center; margin-bottom: 3rem; color: #450693;">
                 Core Competencies
@@ -446,8 +446,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" style="padding: 5rem 2rem; background: #f8f9ff; position: relative;">
-        <div style="position: absolute; inset: 0; background-image: radial-gradient(circle at 40% 40%, rgba(255, 63, 127, 0.03) 0%, transparent 50%), radial-gradient(circle at 60% 60%, rgba(140, 0, 255, 0.03) 0%, transparent 50%);"></div>
+    <section id="contact" style="padding: 5rem 2rem; background: transparent; position: relative;">
         <div style="max-width: 800px; margin: 0 auto; text-align: center; position: relative;">
             <h2 style="font-size: 3.5rem; font-weight: 900; margin-bottom: 2rem; color: #450693;">
                 Let's Connect
