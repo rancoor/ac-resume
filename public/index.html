@@ -206,7 +206,7 @@
                 <h1 class="hero-title" style="font-size: 4rem; font-weight: 900; margin-bottom: 1.5rem; color: #450693; line-height: 1.1;">
                     Amos Cheruiyot
                 </h1>
-                <p class="hero-subtitle" style="font-size: 1.5rem; color: #8C00FF; margin-bottom: 1rem; font-weight: 600;">
+                <p class="hero-subtitle professional-title" style="font-size: 1.5rem; color: #8C00FF; margin-bottom: 1rem; font-weight: 600;">
                     Senior Technical Support Specialist & Product Manager
                 </p>
                 <p class="hero-description" style="font-size: 1.125rem; color: #666666; margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
@@ -247,10 +247,10 @@
                 <div style="background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(20px); border-radius: 24px; padding: 2.5rem; box-shadow: 0 15px 35px rgba(69, 6, 147, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); position: relative;">
                     <div style="position: absolute; top: -2px; left: -2px; right: -2px; height: 6px; background: #FF3F7F; border-radius: 24px 24px 0 0;"></div>
                     <h3 style="font-size: 2rem; font-weight: 700; color: #450693; margin-bottom: 1.5rem;">About Me</h3>
-                    <p style="font-size: 1.125rem; color: #666666; line-height: 1.6; margin-bottom: 1.5rem;">
+                    <p class="about-description" style="font-size: 1.125rem; color: #666666; line-height: 1.6; margin-bottom: 1.5rem;">
                         Dynamic and results-driven technology professional with <strong style="color: #FF3F7F;">5+ years</strong> of proven experience in technical support, product management, and software development within high-growth Fintech environments.
                     </p>
-                    <p style="font-size: 1.125rem; color: #666666; line-height: 1.6; margin-bottom: 2rem;">
+                    <p class="about-detailed" style="font-size: 1.125rem; color: #666666; line-height: 1.6; margin-bottom: 2rem;">
                         Specialized in translating complex technical requirements into user-friendly solutions, with a strong focus on customer experience optimization and cross-functional team collaboration.
                     </p>
                     <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
@@ -265,8 +265,8 @@
                         <div style="position: absolute; top: -2px; left: -2px; right: -2px; height: 4px; background: #FFC400; border-radius: 16px 16px 0 0;"></div>
                         <h4 style="font-weight: 700; color: #450693; margin-bottom: 1rem; font-size: 1.25rem;">🎓 Education</h4>
                         <div style="border-left: 4px solid #FF3F7F; padding-left: 1.5rem;">
-                            <p style="color: #450693; font-weight: 600; font-size: 1.125rem; margin-bottom: 0.25rem;">BSc. Microprocessor Technology and Instrumentation</p>
-                            <p style="color: #8C00FF; font-weight: 500; margin-bottom: 0.5rem;">University of Nairobi • 2014-2018</p>
+                            <p class="degree-title" style="color: #450693; font-weight: 600; font-size: 1.125rem; margin-bottom: 0.25rem;">BSc. Microprocessor Technology and Instrumentation</p>
+                            <p style="color: #8C00FF; font-weight: 500; margin-bottom: 0.5rem;"><span class="university-name">University of Nairobi</span> • <span class="education-years">2014-2018</span></p>
                             <p style="font-size: 0.875rem; color: #666666;">Specialized in embedded systems, instrumentation, and digital signal processing</p>
                         </div>
                     </div>
@@ -603,7 +603,7 @@
                         </div>
                         <div style="text-align: center;">
                             <p style="font-weight: 700; margin-bottom: 0.25rem;">Email</p>
-                            <p style="font-size: 0.875rem; opacity: 0.8;">amoscheruiyot22@gmail.com</p>
+                            <p class="contact-email" style="font-size: 0.875rem; opacity: 0.8;">amoscheruiyot22@gmail.com</p>
                         </div>
                     </div>
                     
@@ -615,7 +615,7 @@
                         </div>
                         <div style="text-align: center;">
                             <p style="font-weight: 700; margin-bottom: 0.25rem;">Phone</p>
-                            <p style="font-size: 0.875rem; opacity: 0.8;">+254 712 255 539</p>
+                            <p class="contact-phone" style="font-size: 0.875rem; opacity: 0.8;">+254 712 255 539</p>
                         </div>
                     </div>
                     
@@ -628,7 +628,7 @@
                         </div>
                         <div style="text-align: center;">
                             <p style="font-weight: 700; margin-bottom: 0.25rem;">Location</p>
-                            <p style="font-size: 0.875rem; opacity: 0.8;">Nairobi, Kenya</p>
+                            <p class="contact-location" style="font-size: 0.875rem; opacity: 0.8;">Nairobi, Kenya</p>
                         </div>
                     </div>
                 </div>
@@ -711,6 +711,7 @@
         </div>
     </footer>
 
+    <script src="js/resume-loader.js"></script>
     <script src="js/main.js"></script>
     
     <!-- Live reload disabled for troubleshooting -->
