@@ -1,8 +1,134 @@
 {
   "profile": {
     "name": "Amos Cheruiyot",
-    "title": "UPDATED TITLE - Live Preview Test"
+    "title": "Senior Technical Support Specialist & Product Manager",
+    "description": "Passionate technology professional with extensive experience in mobile, native and web technologies. With a background in product development, project management, business analysis, digital transformation.\n",
+    "email": "amoscheruiyot22@gmail.com",
+    "phone": "+254 712 255 539",
+    "location": "Nairobi, Kenya",
+    "website": ""
   },
-  "timestamp": 1760757487823,
+  "about": {
+    "summary": "Dynamic and results-driven technology professional with 5+ years of proven experience in technical support, product management, and software development within high-growth Fintech environments.",
+    "description": "Specialized in translating complex technical requirements into user-friendly solutions, with a strong focus on customer experience optimization and cross-functional team collaboration.",
+    "education": {
+      "degree": "BSc. Microprocessor Technology and Instrumentation",
+      "institution": "University of Nairobi",
+      "years": "2014-2018",
+      "description": "This is a test to check if changes reflect online in realtime."
+    },
+    "certifications": [
+      {
+        "name": "SQL Database Management",
+        "issuer": "TestDome",
+        "year": "2020"
+      },
+      {
+        "name": "Cisco Network Associate, Cyber Ops",
+        "issuer": "Cisco",
+        "year": "2018"
+      },
+      {
+        "name": "Cisco Certified Network Professional",
+        "issuer": "Cisco",
+        "year": "2025"
+      }
+    ]
+  },
+  "experience": [
+    {
+      "id": 1,
+      "title": "Tech Excellence Senior Associate",
+      "company": "Kune Food Lab",
+      "location": "Nairobi, Kenya",
+      "startDate": "July 2021",
+      "endDate": "May 2022",
+      "current": false,
+      "achievements": [
+        "Led cross-departmental customer order escalation resolution, improving customer satisfaction by 30%",
+        "Translated complex business requirements into technical specifications using Jira, streamlining development workflows",
+        "Architected and managed PoS systems, optimizing menu management and cost tracking processes",
+        "Developed comprehensive training materials and automation tools, reducing operational overhead by 25%"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Junior Product Manager",
+      "company": "SafeBoda",
+      "location": "Kampala, Uganda",
+      "startDate": "January 2021",
+      "endDate": "May 2021",
+      "current": false,
+      "achievements": [
+        "Collaborated with cross-functional development teams to translate customer requirements into actionable product features",
+        "Managed complete product lifecycles and defined strategic roadmaps aligned with business objectives",
+        "Developed comprehensive strategic vision for feature requests, balancing business and technical requirements",
+        "Delivered user-centric solutions and analyzed technical impact on quarterly performance metrics"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Senior Product Support Associate",
+      "company": "SafeBoda",
+      "location": "Nairobi, Kenya",
+      "startDate": "March 2019",
+      "endDate": "April 2021",
+      "current": false,
+      "achievements": [
+        "Led website maintenance and development initiatives, ensuring optimal performance and user experience",
+        "Conducted comprehensive app diagnostics and troubleshooting, resolving critical technical issues efficiently",
+        "Spearheaded UI/UX testing initiatives and contributed innovative feature suggestions for product enhancement",
+        "Managed high-priority customer escalations and developed anti-fraud strategies as key Fraud team member"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "Technical Support",
+      "icon": "🛠️",
+      "category": "technical"
+    },
+    {
+      "name": "Data Analytics",
+      "icon": "📊",
+      "category": "technical"
+    },
+    {
+      "name": "Software Testing",
+      "icon": "🧪",
+      "category": "technical"
+    },
+    {
+      "name": "Product Management",
+      "icon": "📦",
+      "category": "technical"
+    },
+    {
+      "name": "Web Development",
+      "icon": "💻",
+      "category": "technical"
+    },
+    {
+      "name": "Linux Administration",
+      "icon": "🐧",
+      "category": "technical"
+    },
+    {
+      "name": "Network Management",
+      "icon": "🌐",
+      "category": "technical"
+    },
+    {
+      "name": "Database Management",
+      "icon": "📊",
+      "category": "technical"
+    }
+  ],
+  "achievements": {
+    "customerSatisfaction": "30%",
+    "operationalEfficiency": "75%",
+    "experience": "8+"
+  },
+  "timestamp": 1760757757957,
   "preview": true
 }
