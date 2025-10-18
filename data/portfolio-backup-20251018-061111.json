@@ -37,6 +37,18 @@
   },
   "experience": [
     {
+      "id": 1760756813372,
+      "title": "New Position",
+      "company": "Company Name",
+      "location": "City, Country",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "current": false,
+      "achievements": [
+        "Add your key achievements here"
+      ]
+    },
+    {
       "id": 1,
       "title": "Tech Excellence Senior Associate",
       "company": "Kune Food Lab",

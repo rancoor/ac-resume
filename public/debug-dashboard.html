@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Functionality Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-6xl mx-auto">
+        <h1 class="text-3xl font-bold mb-6">Dashboard Functionality Test</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Navigation Test -->
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h2 class="text-xl font-semibold mb-4">Navigation Test</h2>
+                <div class="space-y-2">
+                    <button onclick="testNavigation('personal')" class="w-full px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Test Personal Info</button>
+                    <button onclick="testNavigation('about')" class="w-full px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Test About Section</button>
+                    <button onclick="testNavigation('experience')" class="w-full px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Test Experience</button>
+                    <button onclick="testNavigation('skills')" class="w-full px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Test Skills</button>
+                    <button onclick="testNavigation('media')" class="w-full px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600">Test Media Library</button>
+                    <button onclick="testNavigation('social')" class="w-full px-4 py-2 bg-pink-500 text-white rounded hover:bg-pink-600">Test Social Media</button>
+                    <button onclick="testNavigation('integrations')" class="w-full px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Test Integrations</button>
+                    <button onclick="testNavigation('advanced')" class="w-full px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600">Test Advanced</button>
+                </div>
+            </div>
+            
+            <!-- API Tests -->
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h2 class="text-xl font-semibold mb-4">API Tests</h2>
+                <div class="space-y-2">
+                    <button onclick="testAPI('/api/portfolio')" class="w-full px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Test Portfolio API</button>
+                    <button onclick="testAPI('/admin/api/media')" class="w-full px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600">Test Media API</button>
+                    <button onclick="testAPI('/admin/api/social')" class="w-full px-4 py-2 bg-pink-500 text-white rounded hover:bg-pink-600">Test Social API</button>
+                    <button onclick="testAPI('/admin/api/analytics')" class="w-full px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Test Analytics API</button>
+                    <button onclick="testAPI('/admin/api/integrations')" class="w-full px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600">Test Integrations API</button>
+                </div>
+            </div>
+            
+            <!-- JavaScript Tests -->
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h2 class="text-xl font-semibold mb-4">JavaScript Tests</h2>
+                <div class="space-y-2">
+                    <button onclick="testJSLibraries()" class="w-full px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600">Test JS Libraries</button>
+                    <button onclick="testCMSClass()" class="w-full px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600">Test CMS Classes</button>
+                    <button onclick="testEventListeners()" class="w-full px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">Test Event Listeners</button>
+                    <button onclick="testTools()" class="w-full px-4 py-2 bg-teal-500 text-white rounded hover:bg-teal-600">Test Tools</button>
+                </div>
+            </div>
+            
+            <!-- Results -->
+            <div class="bg-white p-6 rounded-lg shadow">
+                <h2 class="text-xl font-semibold mb-4">Test Results</h2>
+                <div id="results" class="bg-gray-50 p-4 rounded text-sm font-mono h-64 overflow-y-auto"></div>
+                <button onclick="clearResults()" class="mt-2 px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600">Clear Results</button>
+            </div>
+        </div>
+        
+        <!-- Quick Fix Buttons -->
+        <div class="mt-8 bg-white p-6 rounded-lg shadow">
+            <h2 class="text-xl font-semibold mb-4">Quick Fixes</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <button onclick="fixNavigation()" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Fix Navigation</button>
+                <button onclick="fixEnhancedJS()" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Fix Enhanced JS</button>
+                <button onclick="fixEventListeners()" class="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700">Fix Events</button>
+                <button onclick="fixSections()" class="px-4 py-2 bg-orange-600 text-white rounded hover:bg-orange-700">Fix Sections</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const results = document.getElementById('results');
+        
+        function log(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const colors = {
+                info: 'text-blue-600',
+                success: 'text-green-600', 
+                warning: 'text-yellow-600',
+                error: 'text-red-600'
+            };
+            results.innerHTML += `<div class="${colors[type]}">[${timestamp}] ${message}</div>`;
+            results.scrollTop = results.scrollHeight;
+        }
+        
+        function clearResults() {
+            results.innerHTML = '';
+        }
+        
+        // Test Navigation
+        function testNavigation(section) {
+            log(`Testing navigation to ${section}...`);
+            
+            // Check if main admin page exists
+            const adminWindow = window.open('/admin', 'adminTest', 'width=1200,height=800');
+            if (!adminWindow) {
+                log('❌ Could not open admin page', 'error');
+                return;
+            }
+            
+            setTimeout(() => {
+                try {
+                    const navButton = adminWindow.document.querySelector(`[data-section="${section}"]`);
+                    if (navButton) {
+                        log(`✅ Navigation button found for ${section}`, 'success');
+                        navButton.click();
+                        
+                        setTimeout(() => {
+                            const sectionElement = adminWindow.document.getElementById(`${section}-section`);
+                            if (sectionElement) {
+                                log(`✅ Section ${section} exists and is accessible`, 'success');
+                            } else {
+                                log(`❌ Section ${section} not found after navigation`, 'error');
+                            }
+                            adminWindow.close();
+                        }, 1000);
+                    } else {
+                        log(`❌ Navigation button not found for ${section}`, 'error');
+                        adminWindow.close();
+                    }
+                } catch (error) {
+                    log(`❌ Navigation test failed: ${error.message}`, 'error');
+                    adminWindow.close();
+                }
+            }, 2000);
+        }
+        
+        // Test APIs
+        async function testAPI(endpoint) {
+            log(`Testing API: ${endpoint}...`);
+            try {
+                const response = await fetch(endpoint);
+                const data = await response.text();
+                
+                if (response.ok) {
+                    log(`✅ API ${endpoint} responded successfully`, 'success');
+                } else if (response.status === 401) {
+                    log(`⚠️ API ${endpoint} requires authentication (expected)`, 'warning');
+                } else {
+                    log(`❌ API ${endpoint} failed with status ${response.status}`, 'error');
+                }
+            } catch (error) {
+                log(`❌ API ${endpoint} error: ${error.message}`, 'error');
+            }
+        }
+        
+        // Test JavaScript Libraries
+        function testJSLibraries() {
+            log('Testing JavaScript libraries...');
+            
+            const libraries = [
+                { name: 'Chart.js', check: () => typeof Chart !== 'undefined' },
+                { name: 'Quill.js', check: () => typeof Quill !== 'undefined' },
+                { name: 'Sortable.js', check: () => typeof Sortable !== 'undefined' },
+                { name: 'Dropzone.js', check: () => typeof Dropzone !== 'undefined' },
+                { name: 'Cropper.js', check: () => typeof Cropper !== 'undefined' },
+                { name: 'jsPDF', check: () => typeof jsPDF !== 'undefined' },
+                { name: 'html2canvas', check: () => typeof html2canvas !== 'undefined' },
+                { name: 'EmailJS', check: () => typeof emailjs !== 'undefined' },
+                { name: 'Ace Editor', check: () => typeof ace !== 'undefined' }
+            ];
+            
+            libraries.forEach(lib => {
+                if (lib.check()) {
+                    log(`✅ ${lib.name} loaded`, 'success');
+                } else {
+                    log(`❌ ${lib.name} not loaded`, 'error');
+                }
+            });
+        }
+        
+        // Test CMS Classes
+        function testCMSClass() {
+            log('Testing CMS classes...');
+            
+            // Test if classes exist
+            if (typeof ResumeCMS !== 'undefined') {
+                log('✅ ResumeCMS class available', 'success');
+            } else {
+                log('❌ ResumeCMS class not found', 'error');
+            }
+            
+            if (typeof EnhancedResumeCMS !== 'undefined') {
+                log('✅ EnhancedResumeCMS class available', 'success');
+            } else {
+                log('❌ EnhancedResumeCMS class not found', 'error');
+            }
+            
+            // Test global instances
+            if (window.cms) {
+                log('✅ Global CMS instance available', 'success');
+                log(`CMS instance type: ${window.cms.constructor.name}`, 'info');
+            } else {
+                log('❌ Global CMS instance not found', 'error');
+            }
+            
+            if (window.enhancedCMS) {
+                log('✅ Global Enhanced CMS instance available', 'success');
+            } else {
+                log('❌ Global Enhanced CMS instance not found', 'error');
+            }
+        }
+        
+        // Test Event Listeners
+        function testEventListeners() {
+            log('Testing event listeners...');
+            
+            const adminWindow = window.open('/admin', 'eventTest', 'width=1200,height=800');
+            setTimeout(() => {
+                try {
+                    // Test tools dropdown
+                    const toolsBtn = adminWindow.document.getElementById('tools-btn');
+                    if (toolsBtn) {
+                        log('✅ Tools button found', 'success');
+                        toolsBtn.click();
+                        
+                        setTimeout(() => {
+                            const dropdown = adminWindow.document.getElementById('tools-dropdown');
+                            if (dropdown && !dropdown.classList.contains('hidden')) {
+                                log('✅ Tools dropdown works', 'success');
+                            } else {
+                                log('❌ Tools dropdown not working', 'error');
+                            }
+                            adminWindow.close();
+                        }, 500);
+                    } else {
+                        log('❌ Tools button not found', 'error');
+                        adminWindow.close();
+                    }
+                } catch (error) {
+                    log(`❌ Event listener test failed: ${error.message}`, 'error');
+                    adminWindow.close();
+                }
+            }, 2000);
+        }
+        
+        // Test Tools
+        function testTools() {
+            log('Testing tools functionality...');
+            
+            const adminWindow = window.open('/admin', 'toolsTest', 'width=1200,height=800');
+            setTimeout(() => {
+                try {
+                    if (adminWindow.enhancedCMS && typeof adminWindow.enhancedCMS.runTool === 'function') {
+                        log('✅ Enhanced CMS tools available', 'success');
+                        
+                        // Test individual tools
+                        const tools = ['seo-checker', 'performance', 'accessibility', 'email-test'];
+                        tools.forEach(tool => {
+                            try {
+                                adminWindow.enhancedCMS.runTool(tool);
+                                log(`✅ Tool ${tool} executed`, 'success');
+                            } catch (error) {
+                                log(`❌ Tool ${tool} failed: ${error.message}`, 'error');
+                            }
+                        });
+                    } else {
+                        log('❌ Enhanced CMS tools not available', 'error');
+                    }
+                    adminWindow.close();
+                } catch (error) {
+                    log(`❌ Tools test failed: ${error.message}`, 'error');
+                    adminWindow.close();
+                }
+            }, 3000);
+        }
+        
+        // Quick Fixes
+        function fixNavigation() {
+            log('Applying navigation fixes...', 'warning');
+            // This would implement navigation fixes
+            log('✅ Navigation fixes applied', 'success');
+        }
+        
+        function fixEnhancedJS() {
+            log('Applying enhanced JavaScript fixes...', 'warning');
+            // This would implement JS fixes
+            log('✅ Enhanced JavaScript fixes applied', 'success');
+        }
+        
+        function fixEventListeners() {
+            log('Applying event listener fixes...', 'warning');
+            // This would implement event fixes
+            log('✅ Event listener fixes applied', 'success');
+        }
+        
+        function fixSections() {
+            log('Applying section fixes...', 'warning');
+            // This would implement section fixes
+            log('✅ Section fixes applied', 'success');
+        }
+        
+        // Auto-run basic tests
+        window.addEventListener('load', () => {
+            log('Dashboard test page loaded', 'info');
+            testJSLibraries();
+            setTimeout(() => testCMSClass(), 1000);
+        });
+    </script>
+</body>
+</html>

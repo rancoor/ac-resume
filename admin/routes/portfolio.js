@@ -112,9 +112,30 @@ router.put('/api/portfolio/skills', requireAuth, async (req, res) => {
 // Update achievements
 router.put('/api/portfolio/achievements', requireAuth, async (req, res) => {
   try {
-    const data = await fs.readJson(PORTFOLIO_FILE);
+    // Read current data with validation
+    let data;
+    try {
+      const fileContent = await fs.readFile(PORTFOLIO_FILE, 'utf8');
+      if (!fileContent.trim()) {
+        throw new Error('Empty file');
+      }
+      data = JSON.parse(fileContent);
+    } catch (parseError) {
+      console.error('JSON parse error in achievements update:', parseError);
+      // Try to restore from backup or create default structure
+      data = await restoreOrCreateDefaultData();
+    }
+    
+    // Validate and update achievements
+    if (!data.achievements) {
+      data.achievements = {};
+    }
+    
     data.achievements = { ...data.achievements, ...req.body };
-    await fs.writeJson(PORTFOLIO_FILE, data, { spaces: 2 });
+    
+    // Write with validation
+    await writePortfolioFileSecurely(data);
+    
     res.json({ success: true, data: data.achievements });
   } catch (error) {
     console.error('Error updating achievements:', error);
@@ -125,7 +146,19 @@ router.put('/api/portfolio/achievements', requireAuth, async (req, res) => {
 // Update entire portfolio (comprehensive update)
 router.put('/api/portfolio', requireAuth, async (req, res) => {
   try {
-    const currentData = await fs.readJson(PORTFOLIO_FILE);
+    // Read current data with validation
+    let currentData;
+    try {
+      const fileContent = await fs.readFile(PORTFOLIO_FILE, 'utf8');
+      if (!fileContent.trim()) {
+        throw new Error('Empty file');
+      }
+      currentData = JSON.parse(fileContent);
+    } catch (parseError) {
+      console.error('JSON parse error in portfolio update:', parseError);
+      currentData = await restoreOrCreateDefaultData();
+    }
+    
     const updatedData = { ...currentData, ...req.body };
     
     // Ensure experience items have proper IDs
@@ -136,7 +169,8 @@ router.put('/api/portfolio', requireAuth, async (req, res) => {
       }));
     }
     
-    await fs.writeJson(PORTFOLIO_FILE, updatedData, { spaces: 2 });
+    // Write securely
+    await writePortfolioFileSecurely(updatedData);
     
     // Trigger live reload for all connected clients
     if (global.broadcastReload) {
@@ -180,5 +214,135 @@ router.post('/api/portfolio/publish', requireAuth, async (req, res) => {
 router.get('/dashboard', requireAuth, (req, res) => {
   res.sendFile(path.join(__dirname, '../../public/admin-v2.html'));
 });
+
+// ========================================
+// UTILITY FUNCTIONS FOR FILE SAFETY
+// ========================================
+
+async function restoreOrCreateDefaultData() {
+  console.log('⚠️ Attempting to restore or create default portfolio data');
+  
+  const defaultData = {
+    "profile": {
+      "name": "Your Name",
+      "title": "Your Professional Title",
+      "description": "Your professional description",
+      "email": "your.email@example.com",
+      "phone": "+1234567890",
+      "location": "Your Location",
+      "website": ""
+    },
+    "about": {
+      "summary": "Your professional summary",
+      "description": "Your detailed description",
+      "education": {
+        "degree": "Your Degree",
+        "institution": "Your University",
+        "years": "Year - Year",
+        "description": "Education description"
+      },
+      "certifications": []
+    },
+    "experience": [],
+    "skills": [],
+    "achievements": {
+      "customerSatisfaction": "0%",
+      "operationalEfficiency": "0%",
+      "experience": "0+"
+    }
+  };
+  
+  try {
+    // Try to read from backup if it exists
+    const backupFile = PORTFOLIO_FILE + '.backup';
+    if (await fs.pathExists(backupFile)) {
+      console.log('⚙️ Restoring from backup file');
+      const backupData = await fs.readJson(backupFile);
+      await writePortfolioFileSecurely(backupData);
+      return backupData;
+    }
+  } catch (backupError) {
+    console.warn('⚠️ Could not restore from backup:', backupError.message);
+  }
+  
+  // Use default data as last resort
+  console.log('ℹ️ Using default data structure');
+  await writePortfolioFileSecurely(defaultData);
+  return defaultData;
+}
+
+async function writePortfolioFileSecurely(data) {
+  const tempFile = PORTFOLIO_FILE + '.tmp.' + Date.now();
+  const backupFile = PORTFOLIO_FILE + '.backup';
+  
+  try {
+    // Validate data structure
+    if (!data || typeof data !== 'object') {
+      throw new Error('Invalid data structure');
+    }
+    
+    // Ensure required fields exist
+    if (!data.profile) data.profile = {};
+    if (!data.about) data.about = {};
+    if (!data.experience) data.experience = [];
+    if (!data.skills) data.skills = [];
+    if (!data.achievements) data.achievements = {};
+    
+    // Clean up any existing temp files
+    const existingTempFiles = await fs.readdir(path.dirname(PORTFOLIO_FILE))
+      .then(files => files.filter(f => f.includes('.tmp.')))
+      .catch(() => []);
+    
+    for (const tempFile of existingTempFiles) {
+      try {
+        await fs.unlink(path.join(path.dirname(PORTFOLIO_FILE), tempFile));
+      } catch (e) { /* ignore cleanup errors */ }
+    }
+    
+    // Create backup before writing (remove existing backup first)
+    if (await fs.pathExists(PORTFOLIO_FILE)) {
+      try {
+        if (await fs.pathExists(backupFile)) {
+          await fs.unlink(backupFile);
+        }
+        await fs.copy(PORTFOLIO_FILE, backupFile);
+      } catch (backupError) {
+        console.warn('⚠️ Backup creation failed:', backupError.message);
+        // Continue without backup - better to save than fail
+      }
+    }
+    
+    // Test JSON serialization
+    const jsonString = JSON.stringify(data, null, 2);
+    
+    // Write to unique temporary file first
+    await fs.writeFile(tempFile, jsonString, 'utf8');
+    
+    // Validate the written file can be parsed
+    const testContent = await fs.readFile(tempFile, 'utf8');
+    JSON.parse(testContent); // This will throw if invalid
+    
+    // If validation passes, replace the original file
+    if (await fs.pathExists(PORTFOLIO_FILE)) {
+      await fs.unlink(PORTFOLIO_FILE);
+    }
+    await fs.move(tempFile, PORTFOLIO_FILE);
+    
+    console.log('✅ Portfolio file written successfully');
+  } catch (error) {
+    console.error('❌ Error writing portfolio file securely:', error);
+    
+    // Clean up temp file if it exists
+    try {
+      if (await fs.pathExists(tempFile)) {
+        await fs.unlink(tempFile);
+      }
+    } catch (cleanupError) {
+      console.warn('⚠️ Temp file cleanup failed:', cleanupError.message);
+    }
+    
+    throw error;
+  }
+}
 
 module.exports = router;
