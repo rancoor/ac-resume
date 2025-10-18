@@ -41,16 +41,16 @@
     </script>
     <link href="css/style.css" rel="stylesheet">
 </head>
-<body class="bg-gray-50 relative overflow-x-hidden" style="font-family: 'Inter', sans-serif; background: #ffffff;">
+<body style="font-family: 'Inter', sans-serif; background: #ffffff; position: relative; overflow-x: hidden; margin: 0; padding: 0;">
     <!-- Navigation -->
-    <nav class="fixed w-full top-0 z-50" style="background: #ffffff; border-bottom: 2px solid #450693; box-shadow: 0 4px 20px rgba(69, 6, 147, 0.1);">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-4">
+    <nav style="position: fixed; width: 100%; top: 0; z-index: 50; background: #ffffff; border-bottom: 2px solid #450693; box-shadow: 0 4px 20px rgba(69, 6, 147, 0.1);">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 0;">
                 <a href="#home" style="font-size: 1.5rem; font-weight: 900; color: #450693; text-decoration: none; letter-spacing: 0.05em; transition: color 0.3s;" 
                    onmouseover="this.style.color='#FF3F7F'" onmouseout="this.style.color='#450693'">
                     AMOS CHERUIYOT
                 </a>
-                <div class="hidden md:flex space-x-8">
+                <div style="display: flex; gap: 2rem;">
                     <a href="#home" style="color: #450693; font-weight: 500; text-decoration: none; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s;" 
                        onmouseover="this.style.backgroundColor='#FF3F7F'; this.style.color='#ffffff'" 
                        onmouseout="this.style.backgroundColor='transparent'; this.style.color='#450693'">Home</a>
@@ -67,8 +67,10 @@
                        onmouseover="this.style.backgroundColor='#FF3F7F'; this.style.color='#ffffff'" 
                        onmouseout="this.style.backgroundColor='transparent'; this.style.color='#450693'">Contact</a>
                 </div>
-                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <button id="mobile-menu-btn" style="display: none; padding: 0.5rem; border-radius: 8px; background: transparent; border: none; color: #450693; transition: all 0.3s;" 
+                        onmouseover="this.style.backgroundColor='#f8f9ff'" 
+                        onmouseout="this.style.backgroundColor='transparent'">
+                    <svg style="width: 24px; height: 24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
@@ -120,8 +122,8 @@
             </div>
         </div>
         
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
-            <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div style="position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); animation: bounce 2s infinite;">
+            <svg style="width: 24px; height: 24px; color: #8C00FF;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
             </svg>
         </div>
@@ -129,50 +131,53 @@
 
 
     <!-- About Section -->
-    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 relative">
-        <div class="absolute inset-0 opacity-30" style="background-image: radial-gradient(circle at 1px 1px, rgba(124, 58, 237, 0.1) 1px, transparent 0); background-size: 20px 20px;"></div>
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl font-bold mb-12 text-center text-primary">
+    <section id="about" style="padding: 5rem 2rem; background: #f8f9ff; position: relative;">
+        <div style="position: absolute; inset: 0; background-image: radial-gradient(circle at 20% 20%, rgba(255, 196, 0, 0.03) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255, 63, 127, 0.03) 0%, transparent 50%);"></div>
+        <div style="max-width: 1200px; margin: 0 auto; position: relative;">
+            <h2 style="font-size: 3.5rem; font-weight: 900; margin-bottom: 3rem; text-align: center; color: #450693;">
                 Professional Profile
             </h2>
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-gray-200">
-                    <h3 class="text-2xl font-bold text-primary mb-6">About Me</h3>
-                    <p class="text-lg text-gray-700 leading-relaxed mb-6">
-                        Dynamic and results-driven technology professional with <strong class="text-accent">5+ years</strong> of proven experience in technical support, product management, and software development within high-growth Fintech environments.
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
+                <div style="background: #ffffff; border-radius: 24px; padding: 2.5rem; box-shadow: 0 15px 35px rgba(69, 6, 147, 0.1); border: 2px solid #450693; position: relative;">
+                    <div style="position: absolute; top: -2px; left: -2px; right: -2px; height: 6px; background: #FF3F7F; border-radius: 24px 24px 0 0;"></div>
+                    <h3 style="font-size: 2rem; font-weight: 700; color: #450693; margin-bottom: 1.5rem;">About Me</h3>
+                    <p style="font-size: 1.125rem; color: #666666; line-height: 1.6; margin-bottom: 1.5rem;">
+                        Dynamic and results-driven technology professional with <strong style="color: #FF3F7F;">5+ years</strong> of proven experience in technical support, product management, and software development within high-growth Fintech environments.
                     </p>
-                    <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                    <p style="font-size: 1.125rem; color: #666666; line-height: 1.6; margin-bottom: 2rem;">
                         Specialized in translating complex technical requirements into user-friendly solutions, with a strong focus on customer experience optimization and cross-functional team collaboration.
                     </p>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-medium">5+ Years Experience</span>
-                        <span class="px-4 py-2 bg-orange/10 text-orange rounded-full text-sm font-medium">Fintech Expertise</span>
-                        <span class="px-4 py-2 bg-secondary/10 text-secondary rounded-full text-sm font-medium">Product Leadership</span>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                        <span style="padding: 0.5rem 1rem; background: #FF3F7F; color: #ffffff; border-radius: 50px; font-size: 0.875rem; font-weight: 600;">5+ Years Experience</span>
+                        <span style="padding: 0.5rem 1rem; background: #FFC400; color: #450693; border-radius: 50px; font-size: 0.875rem; font-weight: 600;">Fintech Expertise</span>
+                        <span style="padding: 0.5rem 1rem; background: #8C00FF; color: #ffffff; border-radius: 50px; font-size: 0.875rem; font-weight: 600;">Product Leadership</span>
                     </div>
                 </div>
                 
-                <div class="space-y-6">
-                    <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-200">
-                        <h4 class="font-bold text-primary mb-4 text-xl">🎓 Education</h4>
-                        <div class="border-l-4 border-accent pl-6">
-                            <p class="text-gray-800 font-semibold text-lg">BSc. Microprocessor Technology and Instrumentation</p>
-                            <p class="text-gray-600">University of Nairobi • 2014-2018</p>
-                            <p class="text-sm text-gray-500 mt-2">Specialized in embedded systems, instrumentation, and digital signal processing</p>
+                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <div style="background: #ffffff; border-radius: 16px; padding: 1.5rem; box-shadow: 0 10px 25px rgba(140, 0, 255, 0.1); border: 2px solid #8C00FF; position: relative;">
+                        <div style="position: absolute; top: -2px; left: -2px; right: -2px; height: 4px; background: #FFC400; border-radius: 16px 16px 0 0;"></div>
+                        <h4 style="font-weight: 700; color: #450693; margin-bottom: 1rem; font-size: 1.25rem;">🎓 Education</h4>
+                        <div style="border-left: 4px solid #FF3F7F; padding-left: 1.5rem;">
+                            <p style="color: #450693; font-weight: 600; font-size: 1.125rem; margin-bottom: 0.25rem;">BSc. Microprocessor Technology and Instrumentation</p>
+                            <p style="color: #8C00FF; font-weight: 500; margin-bottom: 0.5rem;">University of Nairobi • 2014-2018</p>
+                            <p style="font-size: 0.875rem; color: #666666;">Specialized in embedded systems, instrumentation, and digital signal processing</p>
                         </div>
                     </div>
                     
-                    <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-200">
-                        <h4 class="font-bold text-primary mb-4 text-xl">🏆 Certifications</h4>
-                        <div class="space-y-3">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-2 h-2 bg-emerald-500 rounded-full"></div>
-                                <span class="text-gray-700 font-medium">SQL Database Management</span>
-                                <span class="text-sm text-gray-500">(TestDome, 2020)</span>
+                    <div style="background: #ffffff; border-radius: 16px; padding: 1.5rem; box-shadow: 0 10px 25px rgba(255, 196, 0, 0.1); border: 2px solid #FFC400; position: relative;">
+                        <div style="position: absolute; top: -2px; left: -2px; right: -2px; height: 4px; background: #8C00FF; border-radius: 16px 16px 0 0;"></div>
+                        <h4 style="font-weight: 700; color: #450693; margin-bottom: 1rem; font-size: 1.25rem;">🏆 Certifications</h4>
+                        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                <div style="width: 8px; height: 8px; background: #FF3F7F; border-radius: 50%;"></div>
+                                <span style="color: #450693; font-weight: 500;">SQL Database Management</span>
+                                <span style="font-size: 0.875rem; color: #666666;">(TestDome, 2020)</span>
                             </div>
-                            <div class="flex items-center space-x-3">
-                                <div class="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                                <span class="text-gray-700 font-medium">Cisco Network Associate, Cyber Ops</span>
-                                <span class="text-sm text-gray-500">(Cisco, 2018)</span>
+                            <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                <div style="width: 8px; height: 8px; background: #FFC400; border-radius: 50%;"></div>
+                                <span style="color: #450693; font-weight: 500;">Cisco Network Associate, Cyber Ops</span>
+                                <span style="font-size: 0.875rem; color: #666666;">(Cisco, 2018)</span>
                             </div>
                         </div>
                     </div>
@@ -344,73 +349,94 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 relative">
-        <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 2px 2px, rgba(16, 185, 129, 0.1) 2px, transparent 0); background-size: 30px 30px;"></div>
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-12 text-primary">
+    <section id="skills" style="padding: 5rem 2rem; background: #ffffff; position: relative;">
+        <div style="position: absolute; inset: 0; background-image: radial-gradient(circle at 30% 30%, rgba(140, 0, 255, 0.03) 0%, transparent 50%), radial-gradient(circle at 70% 70%, rgba(255, 196, 0, 0.03) 0%, transparent 50%);"></div>
+        <div style="max-width: 1200px; margin: 0 auto; position: relative;">
+            <h2 style="font-size: 3.5rem; font-weight: 900; text-align: center; margin-bottom: 3rem; color: #450693;">
                 Core Competencies
             </h2>
             <!-- Core Competencies & Achievements -->
-            <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-10 shadow-2xl border border-gray-200 mx-auto max-w-5xl">
+            <div style="background: #ffffff; border-radius: 24px; padding: 3rem; box-shadow: 0 20px 40px rgba(69, 6, 147, 0.1); border: 2px solid #450693; margin: 0 auto; max-width: 1000px; position: relative;">
+                <div style="position: absolute; top: -2px; left: -2px; right: -2px; height: 6px; background: #FF3F7F; border-radius: 24px 24px 0 0;"></div>
                 <!-- Technical Skills Section -->
-                <div class="mb-12">
-                    <h3 class="text-3xl font-bold text-center mb-10 text-primary">Core Competencies & Key Achievements</h3>
+                <div style="margin-bottom: 3rem;">
+                    <h3 style="font-size: 2.5rem; font-weight: 700; text-align: center; margin-bottom: 2.5rem; color: #450693;">Core Competencies & Key Achievements</h3>
                     
                     <!-- Skills Grid -->
-                    <div class="mb-10">
-                        <h4 class="text-xl font-bold text-gray-800 mb-6 text-center">Technical Expertise</h4>
-                        <div class="flex flex-wrap justify-center gap-3">
-                            <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-accent/10 text-accent border border-accent/20 hover:bg-accent/20 transition-colors">
+                    <div style="margin-bottom: 2.5rem;">
+                        <h4 style="font-size: 1.5rem; font-weight: 700; color: #8C00FF; margin-bottom: 1.5rem; text-align: center;">Technical Expertise</h4>
+                        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem;">
+                            <span style="display: inline-flex; align-items: center; padding: 0.75rem 1.25rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; background: #FF3F7F; color: #ffffff; transition: all 0.3s;" 
+                                  onmouseover="this.style.backgroundColor='#8C00FF'" 
+                                  onmouseout="this.style.backgroundColor='#FF3F7F'">
                                 🛠️ Technical Support
                             </span>
-                            <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-orange/10 text-orange border border-orange/20 hover:bg-orange/20 transition-colors">
+                            <span style="display: inline-flex; align-items: center; padding: 0.75rem 1.25rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; background: #FFC400; color: #450693; transition: all 0.3s;" 
+                                  onmouseover="this.style.backgroundColor='#FF3F7F'; this.style.color='#ffffff'" 
+                                  onmouseout="this.style.backgroundColor='#FFC400'; this.style.color='#450693'">
                                 📊 Data Analytics
                             </span>
-                            <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-secondary/10 text-secondary border border-secondary/20 hover:bg-secondary/20 transition-colors">
+                            <span style="display: inline-flex; align-items: center; padding: 0.75rem 1.25rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; background: #8C00FF; color: #ffffff; transition: all 0.3s;" 
+                                  onmouseover="this.style.backgroundColor='#450693'" 
+                                  onmouseout="this.style.backgroundColor='#8C00FF'">
                                 🧪 Software Testing
                             </span>
-                            <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-accent/10 text-accent border border-accent/20 hover:bg-accent/20 transition-colors">
+                            <span style="display: inline-flex; align-items: center; padding: 0.75rem 1.25rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; background: #FF3F7F; color: #ffffff; transition: all 0.3s;" 
+                                  onmouseover="this.style.backgroundColor='#8C00FF'" 
+                                  onmouseout="this.style.backgroundColor='#FF3F7F'">
                                 📦 Product Management
                             </span>
-                            <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-orange/10 text-orange border border-orange/20 hover:bg-orange/20 transition-colors">
+                            <span style="display: inline-flex; align-items: center; padding: 0.75rem 1.25rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; background: #FFC400; color: #450693; transition: all 0.3s;" 
+                                  onmouseover="this.style.backgroundColor='#FF3F7F'; this.style.color='#ffffff'" 
+                                  onmouseout="this.style.backgroundColor='#FFC400'; this.style.color='#450693'">
                                 💻 Web Development
                             </span>
-                            <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-secondary/10 text-secondary border border-secondary/20 hover:bg-secondary/20 transition-colors">
+                            <span style="display: inline-flex; align-items: center; padding: 0.75rem 1.25rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; background: #8C00FF; color: #ffffff; transition: all 0.3s;" 
+                                  onmouseover="this.style.backgroundColor='#450693'" 
+                                  onmouseout="this.style.backgroundColor='#8C00FF'">
                                 🗄️ SQL Database
                             </span>
-                            <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-accent/10 text-accent border border-accent/20 hover:bg-accent/20 transition-colors">
+                            <span style="display: inline-flex; align-items: center; padding: 0.75rem 1.25rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; background: #FF3F7F; color: #ffffff; transition: all 0.3s;" 
+                                  onmouseover="this.style.backgroundColor='#8C00FF'" 
+                                  onmouseout="this.style.backgroundColor='#FF3F7F'">
                                 🐧 Linux Administration
                             </span>
-                            <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-orange/10 text-orange border border-orange/20 hover:bg-orange/20 transition-colors">
+                            <span style="display: inline-flex; align-items: center; padding: 0.75rem 1.25rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; background: #FFC400; color: #450693; transition: all 0.3s;" 
+                                  onmouseover="this.style.backgroundColor='#FF3F7F'; this.style.color='#ffffff'" 
+                                  onmouseout="this.style.backgroundColor='#FFC400'; this.style.color='#450693'">
                                 🌐 Network Management
                             </span>
-                            <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-secondary/10 text-secondary border border-secondary/20 hover:bg-secondary/20 transition-colors">
+                            <span style="display: inline-flex; align-items: center; padding: 0.75rem 1.25rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; background: #8C00FF; color: #ffffff; transition: all 0.3s;" 
+                                  onmouseover="this.style.backgroundColor='#450693'" 
+                                  onmouseout="this.style.backgroundColor='#8C00FF'">
                                 🔀 Version Control
                             </span>
-                            <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-accent/10 text-accent border border-accent/20 hover:bg-accent/20 transition-colors">
+                            <span style="display: inline-flex; align-items: center; padding: 0.75rem 1.25rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; background: #FF3F7F; color: #ffffff; transition: all 0.3s;" 
+                                  onmouseover="this.style.backgroundColor='#8C00FF'" 
+                                  onmouseout="this.style.backgroundColor='#FF3F7F'">
                                 🎨 UX Optimization
                             </span>
                         </div>
                     </div>
                     
                     <!-- Key Metrics -->
-                    <div class="border-t border-gray-200 pt-8">
-                        <h4 class="text-xl font-bold text-gray-800 mb-6 text-center">Impact & Achievements</h4>
-                        <div class="grid md:grid-cols-3 gap-8 text-center">
-                            <div class="space-y-2">
-                                <div class="text-4xl font-bold text-accent">30%</div>
-                                <div class="text-gray-600 font-medium">Improved Customer Satisfaction</div>
-                                <div class="text-sm text-gray-500">Enhanced escalation resolution processes</div>
+                    <div style="border-top: 2px solid #450693; padding-top: 2rem;">
+                        <h4 style="font-size: 1.5rem; font-weight: 700; color: #8C00FF; margin-bottom: 1.5rem; text-align: center;">Impact & Achievements</h4>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; text-align: center;">
+                            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                <div style="font-size: 3rem; font-weight: 900; color: #FF3F7F;">30%</div>
+                                <div style="color: #450693; font-weight: 600;">Improved Customer Satisfaction</div>
+                                <div style="font-size: 0.875rem; color: #666666;">Enhanced escalation resolution processes</div>
                             </div>
-                            <div class="space-y-2">
-                                <div class="text-4xl font-bold text-orange">25%</div>
-                                <div class="text-gray-600 font-medium">Reduced Operational Overhead</div>
-                                <div class="text-sm text-gray-500">Through automation and optimization</div>
+                            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                <div style="font-size: 3rem; font-weight: 900; color: #FFC400;">25%</div>
+                                <div style="color: #450693; font-weight: 600;">Reduced Operational Overhead</div>
+                                <div style="font-size: 0.875rem; color: #666666;">Through automation and optimization</div>
                             </div>
-                            <div class="space-y-2">
-                                <div class="text-4xl font-bold text-secondary">5+</div>
-                                <div class="text-gray-600 font-medium">Years of Experience</div>
-                                <div class="text-sm text-gray-500">In Fintech and product development</div>
+                            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                <div style="font-size: 3rem; font-weight: 900; color: #8C00FF;">5+</div>
+                                <div style="color: #450693; font-weight: 600;">Years of Experience</div>
+                                <div style="font-size: 0.875rem; color: #666666;">In Fintech and product development</div>
                             </div>
                         </div>
                     </div>
@@ -420,51 +446,55 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-gray-100 to-gray-50">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-4xl font-bold mb-8 text-primary">
+    <section id="contact" style="padding: 5rem 2rem; background: #f8f9ff; position: relative;">
+        <div style="position: absolute; inset: 0; background-image: radial-gradient(circle at 40% 40%, rgba(255, 63, 127, 0.03) 0%, transparent 50%), radial-gradient(circle at 60% 60%, rgba(140, 0, 255, 0.03) 0%, transparent 50%);"></div>
+        <div style="max-width: 800px; margin: 0 auto; text-align: center; position: relative;">
+            <h2 style="font-size: 3.5rem; font-weight: 900; margin-bottom: 2rem; color: #450693;">
                 Let's Connect
             </h2>
-            <div class="bg-white/90 backdrop-blur-sm rounded-3xl p-10 shadow-2xl border border-gray-200">
-                <p class="text-xl text-gray-700 mb-8 font-medium">
+            <div style="background: #ffffff; border-radius: 24px; padding: 3rem; box-shadow: 0 20px 40px rgba(69, 6, 147, 0.1); border: 2px solid #450693; position: relative;">
+                <div style="position: absolute; top: -2px; left: -2px; right: -2px; height: 6px; background: #FF3F7F; border-radius: 24px 24px 0 0;"></div>
+                <p style="font-size: 1.25rem; color: #666666; margin-bottom: 2.5rem; font-weight: 500;">
                     Ready to discuss opportunities and collaborate on innovative projects? 
-                    <span class="text-accent font-semibold">Let's start a conversation!</span>
+                    <span style="color: #FF3F7F; font-weight: 700;">Let's start a conversation!</span>
                 </p>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <a href="mailto:amoscheruiyot22@gmail.com" class="contact-card group flex flex-col items-center space-y-3 text-accent hover:text-emerald-600 transition-all duration-300 bg-gray-50 hover:bg-accent/5 p-6 rounded-2xl hover:shadow-lg">
-                        <div class="w-12 h-12 bg-accent/10 group-hover:bg-accent/20 rounded-full flex items-center justify-center transition-colors">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
+                    <a href="mailto:amoscheruiyot22@gmail.com" style="display: flex; flex-direction: column; align-items: center; gap: 1rem; color: #450693; text-decoration: none; background: #f8f9ff; padding: 1.5rem; border-radius: 16px; border: 2px solid #8C00FF; transition: all 0.3s; position: relative;" 
+                       onmouseover="this.style.backgroundColor='#FF3F7F'; this.style.color='#ffffff'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 10px 25px rgba(255, 63, 127, 0.3)'" 
+                       onmouseout="this.style.backgroundColor='#f8f9ff'; this.style.color='#450693'; this.style.transform='translateY(0px)'; this.style.boxShadow='none'">
+                        <div style="width: 48px; height: 48px; background: #FF3F7F; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s;">
+                            <svg style="width: 24px; height: 24px; color: white;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                             </svg>
                         </div>
-                        <div class="text-center">
-                            <p class="contact-title">Email</p>
-                            <p class="contact-info text-sm">amoscheruiyot22@gmail.com</p>
+                        <div style="text-align: center;">
+                            <p style="font-weight: 700; margin-bottom: 0.25rem;">Email</p>
+                            <p style="font-size: 0.875rem; opacity: 0.8;">amoscheruiyot22@gmail.com</p>
                         </div>
                     </a>
                     
-                    <div class="contact-card flex flex-col items-center space-y-3 text-accent bg-gray-50 p-6 rounded-2xl">
-                        <div class="w-12 h-12 bg-emerald-500/10 rounded-full flex items-center justify-center">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem; color: #450693; background: #f8f9ff; padding: 1.5rem; border-radius: 16px; border: 2px solid #FFC400;">
+                        <div style="width: 48px; height: 48px; background: #FFC400; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                            <svg style="width: 24px; height: 24px; color: #450693;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                             </svg>
                         </div>
-                        <div class="text-center">
-                            <p class="contact-title" style="color: #059669 !important;">Phone</p>
-                            <p class="contact-info text-sm">+254 712 255 539</p>
+                        <div style="text-align: center;">
+                            <p style="font-weight: 700; margin-bottom: 0.25rem;">Phone</p>
+                            <p style="font-size: 0.875rem; opacity: 0.8;">+254 712 255 539</p>
                         </div>
                     </div>
                     
-                    <div class="contact-card flex flex-col items-center space-y-3 text-accent bg-gray-50 p-6 rounded-2xl">
-                        <div class="w-12 h-12 bg-yellow-500/10 rounded-full flex items-center justify-center">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem; color: #450693; background: #f8f9ff; padding: 1.5rem; border-radius: 16px; border: 2px solid #8C00FF;">
+                        <div style="width: 48px; height: 48px; background: #8C00FF; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                            <svg style="width: 24px; height: 24px; color: white;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                             </svg>
                         </div>
-                        <div class="text-center">
-                            <p class="contact-title" style="color: #d97706 !important;">Location</p>
-                            <p class="contact-info text-sm">Nairobi, Kenya</p>
+                        <div style="text-align: center;">
+                            <p style="font-weight: 700; margin-bottom: 0.25rem;">Location</p>
+                            <p style="font-size: 0.875rem; opacity: 0.8;">Nairobi, Kenya</p>
                         </div>
                     </div>
                 </div>
@@ -473,9 +503,9 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-6 px-4 sm:px-6 lg:px-8 bg-primary border-t border-gray-300">
-        <div class="max-w-7xl mx-auto text-center">
-            <p class="text-white font-medium">&copy; 2024 Amos Cheruiyot. All rights reserved.</p>
+    <footer style="padding: 2rem; background: #450693; border-top: 3px solid #FF3F7F;">
+        <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+            <p style="color: #ffffff; font-weight: 500; font-size: 1rem;">&copy; 2024 Amos Cheruiyot. All rights reserved.</p>
         </div>
     </footer>
 
