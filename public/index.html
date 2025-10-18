@@ -13,10 +13,10 @@
             theme: {
                 extend: {
                     colors: {
-                        'primary': '#1a1625',
-                        'secondary': '#2d1b3d', 
-                        'accent': '#7c3aed',
-                        'orange': '#f97316',
+                        'primary': '#450693',
+                        'secondary': '#8C00FF', 
+                        'accent': '#FF3F7F',
+                        'gold': '#FFC400',
                         'dark': '#000000'
                     },
                     animation: {
@@ -41,20 +41,31 @@
     </script>
     <link href="css/style.css" rel="stylesheet">
 </head>
-<body class="bg-gray-50 relative overflow-x-hidden" style="font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 50%, #ffffff 100%); background-attachment: fixed;">
+<body class="bg-gray-50 relative overflow-x-hidden" style="font-family: 'Inter', sans-serif; background: #ffffff;">
     <!-- Navigation -->
-    <nav class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-lg">
+    <nav class="fixed w-full top-0 z-50" style="background: #ffffff; border-bottom: 2px solid #450693; box-shadow: 0 4px 20px rgba(69, 6, 147, 0.1);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
-                <a href="#home" class="text-2xl font-black text-primary hover:text-accent transition-colors duration-300 tracking-wide">
+                <a href="#home" style="font-size: 1.5rem; font-weight: 900; color: #450693; text-decoration: none; letter-spacing: 0.05em; transition: color 0.3s;" 
+                   onmouseover="this.style.color='#FF3F7F'" onmouseout="this.style.color='#450693'">
                     AMOS CHERUIYOT
                 </a>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="nav-link text-gray-700 hover:text-accent font-medium transition-colors">Home</a>
-                    <a href="#about" class="nav-link text-gray-700 hover:text-accent font-medium transition-colors">About</a>
-                    <a href="#experience" class="nav-link text-gray-700 hover:text-accent font-medium transition-colors">Experience</a>
-                    <a href="#skills" class="nav-link text-gray-700 hover:text-accent font-medium transition-colors">Skills</a>
-                    <a href="#contact" class="nav-link text-gray-700 hover:text-accent font-medium transition-colors">Contact</a>
+                    <a href="#home" style="color: #450693; font-weight: 500; text-decoration: none; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s;" 
+                       onmouseover="this.style.backgroundColor='#FF3F7F'; this.style.color='#ffffff'" 
+                       onmouseout="this.style.backgroundColor='transparent'; this.style.color='#450693'">Home</a>
+                    <a href="#about" style="color: #450693; font-weight: 500; text-decoration: none; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s;" 
+                       onmouseover="this.style.backgroundColor='#FF3F7F'; this.style.color='#ffffff'" 
+                       onmouseout="this.style.backgroundColor='transparent'; this.style.color='#450693'">About</a>
+                    <a href="#experience" style="color: #450693; font-weight: 500; text-decoration: none; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s;" 
+                       onmouseover="this.style.backgroundColor='#FF3F7F'; this.style.color='#ffffff'" 
+                       onmouseout="this.style.backgroundColor='transparent'; this.style.color='#450693'">Experience</a>
+                    <a href="#skills" style="color: #450693; font-weight: 500; text-decoration: none; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s;" 
+                       onmouseover="this.style.backgroundColor='#FF3F7F'; this.style.color='#ffffff'" 
+                       onmouseout="this.style.backgroundColor='transparent'; this.style.color='#450693'">Skills</a>
+                    <a href="#contact" style="color: #450693; font-weight: 500; text-decoration: none; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s;" 
+                       onmouseover="this.style.backgroundColor='#FF3F7F'; this.style.color='#ffffff'" 
+                       onmouseout="this.style.backgroundColor='transparent'; this.style.color='#450693'">Contact</a>
                 </div>
                 <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -66,62 +77,43 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
-        <!-- Animated Background -->
-        <div class="absolute inset-0 overflow-hidden">
-            <!-- Geometric Patterns -->
-            <div class="absolute inset-0" style="background-image: 
-                radial-gradient(circle at 20% 80%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(249, 115, 22, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(45, 27, 61, 0.08) 0%, transparent 50%);"></div>
+    <section id="home" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding-top: 4rem; background: #ffffff;">
+        <!-- Clean Background Pattern -->
+        <div style="position: absolute; inset: 0; background: #ffffff;">
+            <!-- Subtle Pattern -->
+            <div style="position: absolute; inset: 0; background-image: radial-gradient(circle at 20% 20%, rgba(255, 196, 0, 0.05) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255, 63, 127, 0.05) 0%, transparent 50%), radial-gradient(circle at 50% 50%, rgba(140, 0, 255, 0.03) 0%, transparent 50%);"></div>
             
-            <!-- Floating Orbs -->
-            <div class="absolute -inset-10 opacity-30">
-                <div class="absolute top-1/4 left-1/4 w-72 h-72 bg-gradient-to-r from-accent/20 to-orange/20 rounded-full filter blur-3xl animate-pulse-slow float"></div>
-                <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-gradient-to-r from-orange/15 to-secondary/15 rounded-full filter blur-3xl animate-pulse-slow float" style="animation-delay: 2s;"></div>
-                <div class="absolute bottom-1/4 left-1/3 w-80 h-80 bg-gradient-to-r from-secondary/20 to-accent/20 rounded-full filter blur-3xl animate-pulse-slow float" style="animation-delay: 4s;"></div>
-            </div>
-            
-            <!-- Animated Grid Lines -->
-            <div class="absolute inset-0 opacity-5">
-                <div class="absolute inset-0" style="background-image: 
-                    linear-gradient(90deg, rgba(15, 23, 42, 0.1) 1px, transparent 1px),
-                    linear-gradient(180deg, rgba(15, 23, 42, 0.1) 1px, transparent 1px);
-                    background-size: 50px 50px;
-                    animation: gridMove 20s linear infinite;"></div>
-            </div>
-            
-            <!-- Particles -->
-            <div class="absolute inset-0 pointer-events-none">
-                <div class="absolute top-1/4 left-1/5 w-2 h-2 bg-accent rounded-full animate-ping" style="animation-delay: 1s; animation-duration: 3s;"></div>
-                <div class="absolute top-1/2 right-1/5 w-1 h-1 bg-orange rounded-full animate-ping" style="animation-delay: 2s; animation-duration: 4s;"></div>
-                <div class="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-secondary rounded-full animate-ping" style="animation-delay: 3s; animation-duration: 5s;"></div>
-                <div class="absolute top-1/6 right-1/3 w-1 h-1 bg-accent rounded-full animate-ping" style="animation-delay: 4s; animation-duration: 3s;"></div>
-                <div class="absolute bottom-1/4 right-1/4 w-2 h-2 bg-orange rounded-full animate-ping" style="animation-delay: 5s; animation-duration: 4s;"></div>
-            </div>
+            <!-- Simple Decorative Elements -->
+            <div style="position: absolute; top: 20%; left: 10%; width: 100px; height: 100px; background: #FFC400; border-radius: 50%; opacity: 0.1;"></div>
+            <div style="position: absolute; top: 60%; right: 15%; width: 150px; height: 150px; background: #FF3F7F; border-radius: 50%; opacity: 0.08;"></div>
+            <div style="position: absolute; bottom: 30%; left: 20%; width: 80px; height: 80px; background: #8C00FF; border-radius: 50%; opacity: 0.06;"></div>
         </div>
         
-        <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8">
-            <div class="animate-fade-in bg-white/95 backdrop-blur-md rounded-3xl p-12 shadow-2xl border border-white/30 relative overflow-hidden">
-                <!-- Glass Card Inner Glow -->
-                <div class="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-accent/5 rounded-3xl"></div>
-                <div class="relative z-10">
-                    <h1 class="text-5xl md:text-7xl font-bold mb-6 text-primary relative">
-                        <span class="bg-gradient-to-r from-primary via-accent to-orange bg-clip-text text-transparent animate-gradient">Amos Cheruiyot</span>
-                    </h1>
-                    <p class="text-xl md:text-2xl text-gray-700 mb-4 animate-slide-up font-medium">
-                        Senior Technical Support Specialist & Product Manager
-                    </p>
-                    <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-                        Passionate technology professional with extensive experience in mobile, native and web technologies. 
-                        Proven track record in developing innovative solutions and managing products in fast-paced Fintech environments.
-                    </p>
-                </div>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up">
-                    <a href="#experience" class="px-8 py-4 bg-gradient-to-r from-accent to-orange text-white rounded-full font-semibold hover:shadow-lg hover:shadow-accent/25 transform hover:-translate-y-1 transition-all duration-300 min-w-[200px]">
+        <div style="position: relative; z-index: 10; text-align: center; padding: 0 2rem; max-width: 1000px;">
+            <div style="background: #ffffff; border-radius: 24px; padding: 4rem 3rem; box-shadow: 0 25px 50px rgba(69, 6, 147, 0.15); border: 2px solid #450693; position: relative;">
+                <!-- Accent Border -->
+                <div style="position: absolute; top: -2px; left: -2px; right: -2px; height: 6px; background: #FF3F7F; border-radius: 24px 24px 0 0;"></div>
+                
+                <h1 style="font-size: 4rem; font-weight: 900; margin-bottom: 1.5rem; color: #450693; line-height: 1.1;">
+                    Amos Cheruiyot
+                </h1>
+                <p style="font-size: 1.5rem; color: #8C00FF; margin-bottom: 1rem; font-weight: 600;">
+                    Senior Technical Support Specialist & Product Manager
+                </p>
+                <p style="font-size: 1.125rem; color: #666666; margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+                    Passionate technology professional with extensive experience in mobile, native and web technologies. 
+                    Proven track record in developing innovative solutions and managing products in fast-paced Fintech environments.
+                </p>
+                
+                <div style="display: flex; flex-direction: column; gap: 1rem; align-items: center;">
+                    <a href="#experience" style="display: inline-block; padding: 1rem 2.5rem; background: #FF3F7F; color: #ffffff; border-radius: 50px; font-weight: 600; text-decoration: none; min-width: 200px; transition: all 0.3s; box-shadow: 0 4px 15px rgba(255, 63, 127, 0.3);" 
+                       onmouseover="this.style.backgroundColor='#8C00FF'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(140, 0, 255, 0.4)'" 
+                       onmouseout="this.style.backgroundColor='#FF3F7F'; this.style.transform='translateY(0px)'; this.style.boxShadow='0 4px 15px rgba(255, 63, 127, 0.3)'">
                         View My Experience
                     </a>
-                    <a href="#contact" class="px-8 py-4 border-2 border-accent text-accent rounded-full font-semibold hover:bg-accent hover:text-white transition-all duration-300 min-w-[200px]">
+                    <a href="#contact" style="display: inline-block; padding: 1rem 2.5rem; background: transparent; color: #FFC400; border: 2px solid #FFC400; border-radius: 50px; font-weight: 600; text-decoration: none; min-width: 200px; transition: all 0.3s;" 
+                       onmouseover="this.style.backgroundColor='#FFC400'; this.style.color='#450693'" 
+                       onmouseout="this.style.backgroundColor='transparent'; this.style.color='#FFC400'">
                         Get In Touch
                     </a>
                 </div>
