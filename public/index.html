@@ -89,6 +89,56 @@
             .section-title { font-size: 3rem !important; }
             .about-grid { gap: 2rem !important; }
         }
+        
+        /* Career Journey Animations */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                max-height: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                max-height: 500px;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(255, 63, 127, 0.4);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 30px rgba(255, 63, 127, 0.6);
+            }
+        }
+        
+        .step-marker:hover {
+            animation: pulse 1.5s infinite;
+            transform: translate(-50%, -50%) scale(1.2) !important;
+        }
+        
+        .step-content:hover {
+            transform: translateY(-5px) !important;
+            box-shadow: 0 20px 40px rgba(69, 6, 147, 0.2) !important;
+        }
+        
+        .expand-icon.rotated {
+            transform: rotate(45deg);
+        }
     </style>
 </head>
 <body style="font-family: 'Inter', sans-serif; background: #ffffff; position: relative; overflow-x: hidden; margin: 0; padding: 0;">
@@ -237,167 +287,200 @@
         </div>
     </section>
 
-    <!-- Experience Section - COMPLETELY REDESIGNED -->
-    <section id="experience" class="section-padding" style="padding: 5rem 1rem; background: transparent;">
+    <!-- Career Journey Section - ANIMATED TIMELINE -->
+    <section id="experience" class="section-padding" style="padding: 5rem 1rem; background: transparent; position: relative;">
         <div style="max-width: 1200px; margin: 0 auto;">
-            <h2 class="section-title" style="font-size: 3.5rem; font-weight: 900; text-align: center; margin-bottom: 3rem; color: #450693;">
-                Professional Experience
+            <h2 class="section-title" style="font-size: 3.5rem; font-weight: 900; text-align: center; margin-bottom: 1rem; color: #450693;">
+                Career Journey
             </h2>
+            <p style="text-align: center; color: #8C00FF; font-size: 1.2rem; margin-bottom: 4rem; font-weight: 500;">Click on any role to explore the achievements and impact</p>
             
-            <!-- Experience Cards Container -->
-            <div style="display: flex; flex-direction: column; gap: 2rem;">
+            <!-- Career Path Timeline -->
+            <div class="career-timeline" style="position: relative; max-width: 800px; margin: 0 auto;">
                 
-                <!-- Job 1: Tech Excellence Senior Associate -->
-                <div class="experience-card" style="background: #ffffff; border-radius: 16px; padding: 2rem; box-shadow: 0 10px 25px rgba(69, 6, 147, 0.1); border: 2px solid #450693; transition: all 0.3s ease; position: relative;" 
-                     onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 20px 40px rgba(69, 6, 147, 0.15)'" 
-                     onmouseout="this.style.transform='translateY(0px)'; this.style.boxShadow='0 10px 25px rgba(69, 6, 147, 0.1)'">
-                    <div style="position: absolute; top: -2px; left: -2px; right: -2px; height: 4px; background: #FF3F7F; border-radius: 16px 16px 0 0;"></div>
-                    <div style="border-left: 4px solid #FF3F7F; padding-left: 1.5rem;">
-                        <!-- Header -->
-                        <div class="experience-header" style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
-                            <div>
-                                <h3 style="font-size: 1.5rem; font-weight: 700; color: #450693; margin-bottom: 0.5rem;">Tech Excellence Senior Associate</h3>
-                                <p style="font-size: 1.25rem; font-weight: 600; color: #FF3F7F; margin-bottom: 0.25rem;">Kune Food Lab</p>
-                                <p style="color: #8C00FF; font-weight: 500;">Nairobi, Kenya</p>
-                            </div>
-                            <span style="background: #FFC400; color: #450693; padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; white-space: nowrap;">July 2021 - May 2022</span>
-                        </div>
-                        
-                        <!-- Achievements -->
-                        <div style="display: flex; flex-direction: column; gap: 1rem;">
-                            <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                                <div style="width: 8px; height: 8px; background: #FF3F7F; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
-                                <p style="color: #450693; font-size: 1rem; line-height: 1.6; font-weight: 500;">Led cross-departmental customer order escalation resolution, improving customer satisfaction by 30%</p>
-                            </div>
-                            <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                                <div style="width: 8px; height: 8px; background: #FFC400; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
-                                <p style="color: #450693; font-size: 1rem; line-height: 1.6; font-weight: 500;">Translated complex business requirements into technical specifications using Jira, streamlining development workflows</p>
-                            </div>
-                            <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                                <div style="width: 8px; height: 8px; background: #8C00FF; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
-                                <p style="color: #450693; font-size: 1rem; line-height: 1.6; font-weight: 500;">Architected and managed PoS systems, optimizing menu management and cost tracking processes</p>
-                            </div>
-                            <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                                <div style="width: 8px; height: 8px; background: #450693; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
-                                <p style="color: #450693; font-size: 1rem; line-height: 1.6; font-weight: 500;">Developed comprehensive training materials and automation tools, reducing operational overhead by 25%</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- Central Timeline Line -->
+                <div class="timeline-line" style="position: absolute; left: 50%; top: 0; width: 4px; height: 100%; background: linear-gradient(to bottom, #FF3F7F 0%, #FFC400 25%, #8C00FF 75%, #450693 100%); border-radius: 2px; transform: translateX(-50%); z-index: 1;"></div>
                 
-                <!-- Job 2: Junior Product Manager -->
-                <div style="background: #ffffff; border-radius: 16px; padding: 2rem; box-shadow: 0 10px 25px rgba(69, 6, 147, 0.1); border: 2px solid #450693; transition: all 0.3s ease; position: relative;" 
-                     onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 20px 40px rgba(69, 6, 147, 0.15)'" 
-                     onmouseout="this.style.transform='translateY(0px)'; this.style.boxShadow='0 10px 25px rgba(69, 6, 147, 0.1)'">
-                    <div style="position: absolute; top: -2px; left: -2px; right: -2px; height: 4px; background: #FFC400; border-radius: 16px 16px 0 0;"></div>
-                    <div style="border-left: 4px solid #FFC400; padding-left: 1.5rem;">
-                        <!-- Header -->
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
-                            <div>
-                                <h3 style="font-size: 1.5rem; font-weight: 700; color: #450693; margin-bottom: 0.5rem;">Junior Product Manager</h3>
-                                <p style="font-size: 1.25rem; font-weight: 600; color: #FFC400; margin-bottom: 0.25rem;">SafeBoda</p>
-                                <p style="color: #8C00FF; font-weight: 500;">Kampala, Uganda</p>
-                            </div>
-                            <span style="background: #FF3F7F; color: #ffffff; padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; white-space: nowrap;">January 2021 - May 2021</span>
-                        </div>
-                        
-                        <!-- Achievements -->
-                        <div style="display: flex; flex-direction: column; gap: 1rem;">
-                            <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                                <div style="width: 8px; height: 8px; background: #FFC400; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
-                                <p style="color: #450693; font-size: 1rem; line-height: 1.6; font-weight: 500;">Collaborated with cross-functional development teams to translate customer requirements into actionable product features</p>
-                            </div>
-                            <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                                <div style="width: 8px; height: 8px; background: #8C00FF; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
-                                <p style="color: #450693; font-size: 1rem; line-height: 1.6; font-weight: 500;">Managed complete product lifecycles and defined strategic roadmaps aligned with business objectives</p>
-                            </div>
-                            <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                                <div style="width: 8px; height: 8px; background: #FF3F7F; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
-                                <p style="color: #450693; font-size: 1rem; line-height: 1.6; font-weight: 500;">Developed comprehensive strategic vision for feature requests, balancing business and technical requirements</p>
-                            </div>
-                            <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                                <div style="width: 8px; height: 8px; background: #450693; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
-                                <p style="color: #450693; font-size: 1rem; line-height: 1.6; font-weight: 500;">Delivered user-centric solutions and analyzed technical impact on quarterly performance metrics</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Job 3: Senior Product Support Associate -->
-                <div style="background: #ffffff; border-radius: 16px; padding: 2rem; box-shadow: 0 10px 25px rgba(69, 6, 147, 0.1); border: 2px solid #450693; transition: all 0.3s ease; position: relative;" 
-                     onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 20px 40px rgba(69, 6, 147, 0.15)'" 
-                     onmouseout="this.style.transform='translateY(0px)'; this.style.boxShadow='0 10px 25px rgba(69, 6, 147, 0.1)'">
-                    <div style="position: absolute; top: -2px; left: -2px; right: -2px; height: 4px; background: #8C00FF; border-radius: 16px 16px 0 0;"></div>
-                    <div style="border-left: 4px solid #8C00FF; padding-left: 1.5rem;">
-                        <!-- Header -->
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
-                            <div>
-                                <h3 style="font-size: 1.5rem; font-weight: 700; color: #450693; margin-bottom: 0.5rem;">Senior Product Support Associate</h3>
-                                <p style="font-size: 1.25rem; font-weight: 600; color: #8C00FF; margin-bottom: 0.25rem;">SafeBoda</p>
-                                <p style="color: #FF3F7F; font-weight: 500;">Nairobi, Kenya</p>
-                            </div>
-                            <span style="background: #8C00FF; color: #ffffff; padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.875rem; font-weight: 600; white-space: nowrap;">March 2019 - April 2021</span>
-                        </div>
-                        
-                        <!-- Achievements -->
-                        <div style="display: flex; flex-direction: column; gap: 1rem;">
-                            <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                                <div style="width: 8px; height: 8px; background: #8C00FF; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
-                                <p style="color: #450693; font-size: 1rem; line-height: 1.6; font-weight: 500;">Led website maintenance and development initiatives, ensuring optimal performance and user experience</p>
-                            </div>
-                            <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                                <div style="width: 8px; height: 8px; background: #FF3F7F; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
-                                <p style="color: #450693; font-size: 1rem; line-height: 1.6; font-weight: 500;">Conducted comprehensive app diagnostics and troubleshooting, resolving critical technical issues efficiently</p>
-                            </div>
-                            <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                                <div style="width: 8px; height: 8px; background: #FFC400; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
-                                <p style="color: #450693; font-size: 1rem; line-height: 1.6; font-weight: 500;">Spearheaded UI/UX testing initiatives and contributed innovative feature suggestions for product enhancement</p>
-                            </div>
-                            <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
-                                <div style="width: 8px; height: 8px; background: #450693; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
-                                <p style="color: #450693; font-size: 1rem; line-height: 1.6; font-weight: 500;">Managed high-priority customer escalations and developed anti-fraud strategies as key Fraud team member</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Job 4: Early Career -->
-                <div style="background: #ffffff; border-radius: 16px; padding: 2rem; box-shadow: 0 10px 25px rgba(69, 6, 147, 0.1); border: 2px solid #450693; transition: all 0.3s ease; position: relative;" 
-                     onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 20px 40px rgba(69, 6, 147, 0.15)'" 
-                     onmouseout="this.style.transform='translateY(0px)'; this.style.boxShadow='0 10px 25px rgba(69, 6, 147, 0.1)'">
-                    <div style="position: absolute; top: -2px; left: -2px; right: -2px; height: 4px; background: #FFC400; border-radius: 16px 16px 0 0;"></div>
-                    <h3 style="font-size: 1.5rem; font-weight: 700; color: #450693; margin-bottom: 1.5rem;">Early Career Foundation</h3>
+                <!-- Career Step 1: Most Recent -->
+                <div class="career-step step-active" data-step="1" style="position: relative; margin-bottom: 4rem; opacity: 0; animation: slideInUp 0.6s ease forwards; animation-delay: 0.2s;">
+                    <div class="step-marker" style="position: absolute; left: 50%; top: 50%; width: 20px; height: 20px; background: #FF3F7F; border-radius: 50%; border: 4px solid #ffffff; transform: translate(-50%, -50%); z-index: 10; box-shadow: 0 0 20px rgba(255, 63, 127, 0.4); cursor: pointer; transition: all 0.3s;"></div>
                     
-                    <div style="display: flex; flex-direction: column; gap: 2rem;">
-                        <!-- Intern Job 1 -->
-                        <div style="border-left: 4px solid #FF3F7F; padding-left: 1.5rem;">
-                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem;">
-                                <div>
-                                    <p style="font-size: 1.125rem; font-weight: 600; color: #450693; margin-bottom: 0.25rem;">Product Support Intern</p>
-                                    <p style="font-weight: 600; color: #FF3F7F;">SafeBoda - Nairobi, Kenya</p>
-                                </div>
-                                <span style="background: #FF3F7F; color: #ffffff; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600; white-space: nowrap;">Dec 2018 - Mar 2019</span>
+                    <div class="step-content" style="width: 45%; margin-left: 55%; padding: 2rem; background: #ffffff; border-radius: 16px; border: 2px solid #FF3F7F; box-shadow: 0 10px 30px rgba(255, 63, 127, 0.15); position: relative; cursor: pointer; transition: all 0.3s;" onclick="toggleExperience(1)">
+                        <div style="position: absolute; top: -2px; left: -2px; right: -2px; height: 6px; background: #FF3F7F; border-radius: 16px 16px 0 0;"></div>
+                        
+                        <div class="step-header">
+                            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                                <div style="width: 12px; height: 12px; background: #FF3F7F; border-radius: 50%;"></div>
+                                <span style="background: #FF3F7F; color: #ffffff; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.75rem; font-weight: 600;">July 2021 - May 2022</span>
                             </div>
-                            <p style="color: #450693; font-size: 1rem; line-height: 1.6; font-weight: 500;">Conducted driver onboarding processes, performed market research analysis, and provided first-line technical support</p>
+                            <h3 style="font-size: 1.25rem; font-weight: 700; color: #450693; margin-bottom: 0.5rem;">Tech Excellence Senior Associate</h3>
+                            <p style="font-size: 1rem; font-weight: 600; color: #FF3F7F; margin-bottom: 0.25rem;">Kune Food Lab</p>
+                            <p style="color: #8C00FF; font-size: 0.9rem;">📍 Nairobi, Kenya</p>
                         </div>
                         
-                        <!-- Intern Job 2 -->
-                        <div style="border-left: 4px solid #FFC400; padding-left: 1.5rem;">
-                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem;">
-                                <div>
-                                    <p style="font-size: 1.125rem; font-weight: 600; color: #450693; margin-bottom: 0.25rem;">Technical Support Intern</p>
-                                    <p style="font-weight: 600; color: #FFC400;">Internet Solutions KE - Nairobi, Kenya</p>
-                                </div>
-                                <span style="background: #FFC400; color: #450693; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600; white-space: nowrap;">Sep 2016 - Dec 2016</span>
+                        <div class="expand-icon" style="position: absolute; bottom: 1rem; right: 1rem; width: 24px; height: 24px; background: #FF3F7F; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem; transition: transform 0.3s;">+</div>
+                    </div>
+                    
+                    <!-- Hidden Achievement Details -->
+                    <div class="achievements-panel" id="achievements-1" style="display: none; width: 45%; margin-left: 55%; margin-top: 1rem; padding: 1.5rem; background: #f8f9ff; border-radius: 12px; border: 2px solid #FF3F7F; animation: slideDown 0.3s ease;">
+                        <h4 style="color: #450693; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            🎯 Key Achievements
+                        </h4>
+                        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <div style="display: flex; align-items: flex-start; gap: 0.5rem;">
+                                <div style="width: 6px; height: 6px; background: #FF3F7F; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                                <p style="color: #450693; font-size: 0.9rem; line-height: 1.4;">Led cross-departmental customer order escalation resolution, improving customer satisfaction by 30%</p>
                             </div>
-                            <p style="color: #450693; font-size: 1rem; line-height: 1.6; font-weight: 500;">Managed network infrastructure support, client ticket resolution, and cloud service administration</p>
+                            <div style="display: flex; align-items: flex-start; gap: 0.5rem;">
+                                <div style="width: 6px; height: 6px; background: #FFC400; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                                <p style="color: #450693; font-size: 0.9rem; line-height: 1.4;">Translated complex business requirements into technical specifications using Jira, streamlining development workflows</p>
+                            </div>
+                            <div style="display: flex; align-items: flex-start; gap: 0.5rem;">
+                                <div style="width: 6px; height: 6px; background: #8C00FF; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                                <p style="color: #450693; font-size: 0.9rem; line-height: 1.4;">Architected and managed PoS systems, optimizing menu management and cost tracking processes</p>
+                            </div>
+                            <div style="display: flex; align-items: flex-start; gap: 0.5rem;">
+                                <div style="width: 6px; height: 6px; background: #450693; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                                <p style="color: #450693; font-size: 0.9rem; line-height: 1.4;">Developed comprehensive training materials and automation tools, reducing operational overhead by 25%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Career Step 3 -->
+                <div class="career-step" data-step="3" style="position: relative; margin-bottom: 4rem; opacity: 0; animation: slideInUp 0.6s ease forwards; animation-delay: 0.6s;">
+                    <div class="step-marker" style="position: absolute; left: 50%; top: 50%; width: 20px; height: 20px; background: #8C00FF; border-radius: 50%; border: 4px solid #ffffff; transform: translate(-50%, -50%); z-index: 10; box-shadow: 0 0 20px rgba(140, 0, 255, 0.4); cursor: pointer; transition: all 0.3s;"></div>
+                    
+                    <div class="step-content" style="width: 45%; margin-left: 55%; padding: 2rem; background: #ffffff; border-radius: 16px; border: 2px solid #8C00FF; box-shadow: 0 10px 30px rgba(140, 0, 255, 0.15); position: relative; cursor: pointer; transition: all 0.3s;" onclick="toggleExperience(3)">
+                        <div style="position: absolute; top: -2px; left: -2px; right: -2px; height: 6px; background: #8C00FF; border-radius: 16px 16px 0 0;"></div>
+                        
+                        <div class="step-header">
+                            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                                <div style="width: 12px; height: 12px; background: #8C00FF; border-radius: 50%;"></div>
+                                <span style="background: #8C00FF; color: #ffffff; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.75rem; font-weight: 600;">March 2019 - April 2021</span>
+                            </div>
+                            <h3 style="font-size: 1.25rem; font-weight: 700; color: #450693; margin-bottom: 0.5rem;">Senior Product Support Associate</h3>
+                            <p style="font-size: 1rem; font-weight: 600; color: #8C00FF; margin-bottom: 0.25rem;">SafeBoda</p>
+                            <p style="color: #FF3F7F; font-size: 0.9rem;">📍 Nairobi, Kenya</p>
+                        </div>
+                        
+                        <div class="expand-icon" style="position: absolute; bottom: 1rem; right: 1rem; width: 24px; height: 24px; background: #8C00FF; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem; transition: transform 0.3s;">+</div>
+                    </div>
+                    
+                    <!-- Hidden Achievement Details -->
+                    <div class="achievements-panel" id="achievements-3" style="display: none; width: 45%; margin-left: 55%; margin-top: 1rem; padding: 1.5rem; background: #f8f9ff; border-radius: 12px; border: 2px solid #8C00FF; animation: slideDown 0.3s ease;">
+                        <h4 style="color: #450693; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            💡 Key Achievements
+                        </h4>
+                        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <div style="display: flex; align-items: flex-start; gap: 0.5rem;">
+                                <div style="width: 6px; height: 6px; background: #8C00FF; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                                <p style="color: #450693; font-size: 0.9rem; line-height: 1.4;">Led website maintenance and development initiatives, ensuring optimal performance and user experience</p>
+                            </div>
+                            <div style="display: flex; align-items: flex-start; gap: 0.5rem;">
+                                <div style="width: 6px; height: 6px; background: #FF3F7F; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                                <p style="color: #450693; font-size: 0.9rem; line-height: 1.4;">Conducted comprehensive app diagnostics and troubleshooting, resolving critical technical issues efficiently</p>
+                            </div>
+                            <div style="display: flex; align-items: flex-start; gap: 0.5rem;">
+                                <div style="width: 6px; height: 6px; background: #FFC400; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                                <p style="color: #450693; font-size: 0.9rem; line-height: 1.4;">Spearheaded UI/UX testing initiatives and contributed innovative feature suggestions for product enhancement</p>
+                            </div>
+                            <div style="display: flex; align-items: flex-start; gap: 0.5rem;">
+                                <div style="width: 6px; height: 6px; background: #450693; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                                <p style="color: #450693; font-size: 0.9rem; line-height: 1.4;">Managed high-priority customer escalations and developed anti-fraud strategies as key Fraud team member</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Career Step 4: Early Career Foundation -->
+                <div class="career-step" data-step="4" style="position: relative; margin-bottom: 2rem; opacity: 0; animation: slideInUp 0.6s ease forwards; animation-delay: 0.8s;">
+                    <div class="step-marker" style="position: absolute; left: 50%; top: 50%; width: 20px; height: 20px; background: #450693; border-radius: 50%; border: 4px solid #ffffff; transform: translate(-50%, -50%); z-index: 10; box-shadow: 0 0 20px rgba(69, 6, 147, 0.4); cursor: pointer; transition: all 0.3s;"></div>
+                    
+                    <div class="step-content" style="width: 45%; margin-right: 55%; padding: 2rem; background: #ffffff; border-radius: 16px; border: 2px solid #450693; box-shadow: 0 10px 30px rgba(69, 6, 147, 0.15); position: relative; cursor: pointer; transition: all 0.3s;" onclick="toggleExperience(4)">
+                        <div style="position: absolute; top: -2px; left: -2px; right: -2px; height: 6px; background: #450693; border-radius: 16px 16px 0 0;"></div>
+                        
+                        <div class="step-header">
+                            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                                <div style="width: 12px; height: 12px; background: #450693; border-radius: 50%;"></div>
+                                <span style="background: #450693; color: #ffffff; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.75rem; font-weight: 600;">2016 - 2019</span>
+                            </div>
+                            <h3 style="font-size: 1.25rem; font-weight: 700; color: #450693; margin-bottom: 0.5rem;">Early Career Foundation</h3>
+                            <p style="font-size: 1rem; font-weight: 600; color: #450693; margin-bottom: 0.25rem;">Multiple Organizations</p>
+                            <p style="color: #8C00FF; font-size: 0.9rem;">📍 Kenya</p>
+                        </div>
+                        
+                        <div class="expand-icon" style="position: absolute; bottom: 1rem; right: 1rem; width: 24px; height: 24px; background: #450693; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem; transition: transform 0.3s;">+</div>
+                    </div>
+                    
+                    <!-- Hidden Achievement Details -->
+                    <div class="achievements-panel" id="achievements-4" style="display: none; width: 45%; margin-right: 55%; margin-top: 1rem; padding: 1.5rem; background: #f8f9ff; border-radius: 12px; border: 2px solid #450693; animation: slideDown 0.3s ease;">
+                        <h4 style="color: #450693; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            🌱 Foundation Roles
+                        </h4>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div style="border-left: 3px solid #FF3F7F; padding-left: 1rem;">
+                                <h5 style="color: #FF3F7F; font-weight: 600; margin-bottom: 0.25rem;">Product Support Intern - SafeBoda</h5>
+                                <p style="color: #666666; font-size: 0.8rem; margin-bottom: 0.5rem;">Dec 2018 - Mar 2019</p>
+                                <p style="color: #450693; font-size: 0.9rem; line-height: 1.4;">Conducted driver onboarding processes, performed market research analysis, and provided first-line technical support</p>
+                            </div>
+                            <div style="border-left: 3px solid #FFC400; padding-left: 1rem;">
+                                <h5 style="color: #FFC400; font-weight: 600; margin-bottom: 0.25rem;">Technical Support Intern - Internet Solutions KE</h5>
+                                <p style="color: #666666; font-size: 0.8rem; margin-bottom: 0.5rem;">Sep 2016 - Dec 2016</p>
+                                <p style="color: #450693; font-size: 0.9rem; line-height: 1.4;">Managed network infrastructure support, client ticket resolution, and cloud service administration</p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
             </div>
         </div>
-    </section>
+                
+                <!-- Career Step 2 -->
+                <div class="career-step" data-step="2" style="position: relative; margin-bottom: 4rem; opacity: 0; animation: slideInUp 0.6s ease forwards; animation-delay: 0.4s;">
+                    <div class="step-marker" style="position: absolute; left: 50%; top: 50%; width: 20px; height: 20px; background: #FFC400; border-radius: 50%; border: 4px solid #ffffff; transform: translate(-50%, -50%); z-index: 10; box-shadow: 0 0 20px rgba(255, 196, 0, 0.4); cursor: pointer; transition: all 0.3s;"></div>
+                    
+                    <div class="step-content" style="width: 45%; margin-right: 55%; padding: 2rem; background: #ffffff; border-radius: 16px; border: 2px solid #FFC400; box-shadow: 0 10px 30px rgba(255, 196, 0, 0.15); position: relative; cursor: pointer; transition: all 0.3s;" onclick="toggleExperience(2)">
+                        <div style="position: absolute; top: -2px; left: -2px; right: -2px; height: 6px; background: #FFC400; border-radius: 16px 16px 0 0;"></div>
+                        
+                        <div class="step-header">
+                            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                                <div style="width: 12px; height: 12px; background: #FFC400; border-radius: 50%;"></div>
+                                <span style="background: #FFC400; color: #450693; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.75rem; font-weight: 600;">January 2021 - May 2021</span>
+                            </div>
+                            <h3 style="font-size: 1.25rem; font-weight: 700; color: #450693; margin-bottom: 0.5rem;">Junior Product Manager</h3>
+                            <p style="font-size: 1rem; font-weight: 600; color: #FFC400; margin-bottom: 0.25rem;">SafeBoda</p>
+                            <p style="color: #8C00FF; font-size: 0.9rem;">📍 Kampala, Uganda</p>
+                        </div>
+                        
+                        <div class="expand-icon" style="position: absolute; bottom: 1rem; right: 1rem; width: 24px; height: 24px; background: #FFC400; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #450693; font-size: 0.8rem; transition: transform 0.3s;">+</div>
+                    </div>
+                    
+                    <!-- Hidden Achievement Details -->
+                    <div class="achievements-panel" id="achievements-2" style="display: none; width: 45%; margin-right: 55%; margin-top: 1rem; padding: 1.5rem; background: #f8f9ff; border-radius: 12px; border: 2px solid #FFC400; animation: slideDown 0.3s ease;">
+                        <h4 style="color: #450693; font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            🚀 Key Achievements
+                        </h4>
+                        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <div style="display: flex; align-items: flex-start; gap: 0.5rem;">
+                                <div style="width: 6px; height: 6px; background: #FFC400; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                                <p style="color: #450693; font-size: 0.9rem; line-height: 1.4;">Collaborated with cross-functional development teams to translate customer requirements into actionable product features</p>
+                            </div>
+                            <div style="display: flex; align-items: flex-start; gap: 0.5rem;">
+                                <div style="width: 6px; height: 6px; background: #8C00FF; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                                <p style="color: #450693; font-size: 0.9rem; line-height: 1.4;">Managed complete product lifecycles and defined strategic roadmaps aligned with business objectives</p>
+                            </div>
+                            <div style="display: flex; align-items: flex-start; gap: 0.5rem;">
+                                <div style="width: 6px; height: 6px; background: #FF3F7F; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                                <p style="color: #450693; font-size: 0.9rem; line-height: 1.4;">Developed comprehensive strategic vision for feature requests, balancing business and technical requirements</p>
+                            </div>
+                            <div style="display: flex; align-items: flex-start; gap: 0.5rem;">
+                                <div style="width: 6px; height: 6px; background: #450693; border-radius: 50%; margin-top: 0.5rem; flex-shrink: 0;"></div>
+                                <p style="color: #450693; font-size: 0.9rem; line-height: 1.4;">Delivered user-centric solutions and analyzed technical impact on quarterly performance metrics</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
     <!-- Skills Section -->
     <section id="skills" class="section-padding" style="padding: 5rem 2rem; background: transparent; position: relative;">
@@ -586,6 +669,82 @@
             });
             
             console.log('✅ Text colors forced via JavaScript');
+        });
+        
+        // Career Journey Interactive Functions
+        function toggleExperience(stepId) {
+            const panel = document.getElementById(`achievements-${stepId}`);
+            const icon = document.querySelector(`[onclick="toggleExperience(${stepId})"] .expand-icon`);
+            const stepContent = document.querySelector(`[onclick="toggleExperience(${stepId})"]`);
+            
+            // Close all other panels first
+            document.querySelectorAll('.achievements-panel').forEach((otherPanel, index) => {
+                const otherId = index + 1;
+                if (otherId !== stepId && otherPanel.style.display === 'block') {
+                    otherPanel.style.display = 'none';
+                    const otherIcon = document.querySelector(`[onclick="toggleExperience(${otherId})"] .expand-icon`);
+                    const otherContent = document.querySelector(`[onclick="toggleExperience(${otherId})"]`);
+                    if (otherIcon) {
+                        otherIcon.textContent = '+';
+                        otherIcon.classList.remove('rotated');
+                    }
+                    if (otherContent) {
+                        otherContent.style.background = '#ffffff';
+                    }
+                }
+            });
+            
+            // Toggle current panel
+            if (panel.style.display === 'none' || panel.style.display === '') {
+                panel.style.display = 'block';
+                icon.textContent = '×';
+                icon.classList.add('rotated');
+                stepContent.style.background = '#f8f9ff';
+                
+                // Smooth scroll to the panel
+                setTimeout(() => {
+                    panel.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'nearest'
+                    });
+                }, 300);
+            } else {
+                panel.style.display = 'none';
+                icon.textContent = '+';
+                icon.classList.remove('rotated');
+                stepContent.style.background = '#ffffff';
+            }
+            
+            // Add pulse effect to marker
+            const marker = document.querySelector(`[data-step="${stepId}"] .step-marker`);
+            marker.style.animation = 'pulse 0.6s ease-in-out';
+            setTimeout(() => {
+                marker.style.animation = '';
+            }, 600);
+        }
+        
+        // Add intersection observer for timeline animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const timelineSteps = document.querySelectorAll('.career-step');
+                        timelineSteps.forEach((step, index) => {
+                            setTimeout(() => {
+                                step.style.opacity = '1';
+                                step.style.transform = 'translateY(0)';
+                            }, index * 200);
+                        });
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            const timeline = document.querySelector('.career-timeline');
+            if (timeline) {
+                observer.observe(timeline);
+            }
         });
     </script>
 </body>
